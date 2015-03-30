@@ -87,9 +87,8 @@ class Terbilang{
                 $remainder = $number % $baseUnit;
                 $numBaseUnits;
                 if($this->prenum) {
-                    $string = (($numBaseUnits === 1 && $number < 1000000) ? $this->prenum : $this->make(
-                                $numBaseUnits
-                            ) . ' ') . $this->dictionary[$baseUnit];
+                    $lead = (int) substr($numBaseUnits, 0, 1);
+                    $string = (($lead === 1 && $number < 1000000) ? $this->prenum : $this->make($numBaseUnits) . ' ') . $this->dictionary[$baseUnit];
                 }else{
                     $string = $this->make($numBaseUnits) . ' ' . $this->dictionary[$baseUnit];
                 }
