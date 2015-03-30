@@ -1,0 +1,27 @@
+{
+    "name": "riskihajar/terbilang",
+    "description": "Convert number to word in any language for Laravel 4",
+    "homepage": "https://github.com/riskihajar/terbilang",
+    "license": "MIT",
+    "keywords": ["laravel", "terbilang", "number to word"],
+    "authors": [
+        {
+            "name": "riskihajar",
+            "email": "riskihajar@gmail.com",
+            "homepage": "http://riskihajar.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Riskihajar\\Terbilang\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}

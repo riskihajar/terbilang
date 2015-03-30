@@ -28,7 +28,11 @@ Basic :
 ```
 Terbilang::make(1000000);
 ```
-Result : `one million` in *en* | `satu juta` in *id* `locale`
+Result : 
+```one million```
+in *en*
+```satu juta```
+in *id* `locale`
 
 ### Prefix & Suffix
 Syntax :
