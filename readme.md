@@ -1,19 +1,19 @@
-# Number To Word Conversion For Laravel 4
+## Number To Word Conversion For Laravel 4
 Number to word conversion support multi language.
 
-## Supported Langugage
+### Supported Langugage
 * `id` | *Indonesian*
 * `en` | *English*
 * soon
 
-## Usage
+### Usage
 
-### Step 1: Install Through Composer
+#### Step 1: Install Through Composer
 ```
 composer require riskihajar/terbilang --dev
 ````
 
-### Step 2: Add Providers & Aliases
+#### Step 2: Add Providers & Aliases
 In the `$providers` array add the service providers for this package.
 ```
 'Riskihajar\Terbilang\TerbilangServiceProvider',
@@ -23,21 +23,28 @@ Add the facade of this package to the `$aliases` array.
 'Terbilang' => 'Riskihajar\Terbilang\Facades\Terbilang',
 ```
 
-## Examples
+### Examples
 Basic :
 ```
 Terbilang::make(1000000);
 ```
 Result : 
-```one million```
-in *en*
-```satu juta```
-in *id* `locale`
+```
+one million
+```
+for *en* `locale`
+```
+satu juta
+```
+for *id* `locale`
 
-### Prefix & Suffix
+#### Prefix & Suffix
 Syntax :
 ```
 Terbilang::make(123456, ' rupiah', 'senilai ');
 ```
-Result : `senilai satu ratus dua puluh tiga ribu, empat ratus lima puluh enam rupiah`
+Result :
+```
+senilai satu ratus dua puluh tiga ribu, empat ratus lima puluh enam rupiah
+```
 
