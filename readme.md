@@ -43,8 +43,15 @@ Syntax :
 ```
 Terbilang::make(123456, ' rupiah', 'senilai ');
 ```
-Result :
+Result `id` :
 ```
-senilai satu ratus dua puluh tiga ribu, empat ratus lima puluh enam rupiah
+senilai seribu, empat ratus lima puluh enam rupiah
 ```
-
+Syntax : 
+```
+Terbilang::make(654321, ' dolars');
+```
+Result `en` :
+```
+six hundred and fifty-four thousand, three hundred and twenty-one dolars
+```
