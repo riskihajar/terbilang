@@ -1,9 +1,9 @@
 ## Number To Word Conversion For Laravel 4
-[![Build Status](https://travis-ci.org/riskihajar/terbilang-php.svg?branch=master)](https://travis-ci.org/riskihajar/terbilang-php)
+[![Build Status](https://travis-ci.org/riskihajar/terbilang.svg?branch=master)](https://travis-ci.org/riskihajar/terbilang)
 [![Latest Stable Version](https://poser.pugx.org/riskihajar/terbilang/v/stable.svg)](https://packagist.org/packages/riskihajar/terbilang)
 [![Total Downloads](https://poser.pugx.org/riskihajar/terbilang/downloads.svg)](https://packagist.org/packages/riskihajar/terbilang)
 [![Latest Unstable Version](https://poser.pugx.org/riskihajar/terbilang/v/unstable.svg)](https://packagist.org/packages/riskihajar/terbilang)
-[![License](https://poser.pugx.org/riskihajar/terbilang/license.svg)](https://github.com/riskihajar/terbilang-php/blob/master/LICENSE)
+[![License](https://poser.pugx.org/riskihajar/terbilang/license.svg)](https://github.com/riskihajar/terbilang/blob/master/LICENSE)
 
 Number to words conversion support multi language.
 
@@ -13,7 +13,7 @@ Number to words conversion support multi language.
 * soon
 
 ### Feature
-* [Number to Word](https://github.com/riskihajar/terbilang#examples)
+* [Number to Word](https://github.com/riskihajar/terbilang#number-to-words)
 * [Datetime to Word](https://github.com/riskihajar/terbilang#datetime)
 
 ### Usage
@@ -34,59 +34,43 @@ Add the facade of this package to the `$aliases` array.
 ```
 
 ### Examples
-Basic :
+#### Number To Words `Terbilang::make($number, $suffix, $prefix)`
+if you set locale to en
 ```
-Terbilang::make(1000000);
+Terbilang::make(1000000); // one million
 ```
-Result : 
+if you set locale to id
 ```
-one million
+Terbilang::make(1000000); //satu juta
 ```
-for *en* `locale`
-```
-satu juta
-```
-for *id* `locale`
 
-#### Prefix & Suffix
-Syntax :
+##### Prefix & Suffix
+if you set locale to id
 ```
 Terbilang::make(123456, ' rupiah', 'senilai ');
+// senilai seratus dua puluh tiga ribu, empat ratus lima puluh enam rupiah
 ```
-Result `id` :
-```
-senilai seratus dua puluh tiga ribu, empat ratus lima puluh enam rupiah
-```
-Syntax : 
+if you set locale to en
 ```
 Terbilang::make(654321, ' dollars');
-```
-Result `en` :
-```
-six hundred and fifty-four thousand, three hundred and twenty-one dollars
+// six hundred and fifty-four thousand, three hundred and twenty-one dollars
 ```
 
 #### Datetime
 ##### Date `Terbilang::date($date, $format='Y-m-d');`
 ```
-<?php
-
 $date = date('Y-m-d'); // 2015-03-31
 Terbilang::date($date);
 // Result : tiga puluh satu maret dua ribu lima belas
 ```
 ##### Time `Terbilang::time($date, $format='h:i:s');`
 ```
-<?php
-
 $date = date('h:i:s'); //10:56:30
 Terbilang::time($date);
 // Result : sepuluh lewat lima puluh enam menit tiga puluh tiga detik
 ```
 ##### Date Time `Terbilang::datetime($date, $format='Y-m-d h:i:s');`
 ```
-<?php
-
 $date = date('Y-m-d h:i:s'); // 2015-03-31 10:58:27
 Terbilang::datetime($date);
 // Result : tiga puluh satu maret dua ribu lima belas pukul sepuluh lewat lima puluh delapan menit dua puluh tujuh detik
@@ -94,8 +78,6 @@ Terbilang::datetime($date);
 ##### Using Carbon
 if using carbon, you can ignore `$format`
 ```
-<?php
-
 $dt = Carbon\Carbon::now('Asia/Makassar');
 
 $date = Terbilang::date($dt);
