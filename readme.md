@@ -45,7 +45,7 @@ Terbilang::make(123456, ' rupiah', 'senilai ');
 ```
 Result `id` :
 ```
-senilai seribu, empat ratus lima puluh enam rupiah
+seratus dua puluh tiga ribu, empat ratus lima puluh enam
 ```
 Syntax : 
 ```
