@@ -7,7 +7,7 @@ Number to word conversion support multi language.
 * soon
 
 ### Feature
-* [Number to Word](https://github.com/riskihajar/terbilang#example)
+* [Number to Word](https://github.com/riskihajar/terbilang#examples)
 * [Datetime to Word](https://github.com/riskihajar/terbilang#datetime)
 
 ### Usage
