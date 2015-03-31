@@ -75,8 +75,12 @@ class Terbilang{
             case $number < 1000:
                 $hundreds  = $number / 100;
                 $remainder = $number % 100;
-                // $string = $dictionary[$hundreds] . ' ' . $dictionary[100];
-                $string = ($hundreds === 1 ? $this->prenum : $this->dictionary[$hundreds] . ' ') . $this->dictionary[100];
+                if($this->prenum){
+                    $lead = (int) substr($number, 0, 1);
+                    $string = ($lead === 1 ? $this->prenum : $this->dictionary[$hundreds] . ' ') . $this->dictionary[100];
+                }else{
+                    $string = $this->dictionary[$hundreds] . ' ' . $this->dictionary[100];
+                }
                 if ($remainder) {
                     $string .= $this->conjunction . $this->make($remainder);
                 }
@@ -85,10 +89,8 @@ class Terbilang{
                 $baseUnit = pow(1000, floor(log($number, 1000)));
                 $numBaseUnits = (int) ($number / $baseUnit);
                 $remainder = $number % $baseUnit;
-                $numBaseUnits;
                 if($this->prenum) {
-                    $lead = (int) substr($numBaseUnits, 0, 1);
-                    $string = (($lead === 1 && $number < 1000000) ? $this->prenum : $this->make($numBaseUnits) . ' ') . $this->dictionary[$baseUnit];
+                    $string = ($numBaseUnits === 1 ? $this->prenum : $this->make($numBaseUnits) . ' ') . $this->dictionary[$baseUnit];
                 }else{
                     $string = $this->make($numBaseUnits) . ' ' . $this->dictionary[$baseUnit];
                 }
@@ -111,5 +113,4 @@ class Terbilang{
 
         return $prefix . $string . $suffix;
     }
-
 }

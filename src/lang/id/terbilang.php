@@ -20,7 +20,7 @@ return array(
         7                   => 'tujuh',
         8                   => 'delapan',
         9                   => 'sembilan',
-        10                  => 'sepupluh',
+        10                  => 'sepuluh',
         11                  => 'sebelas',
         12                  => 'dua belas',
         13                  => 'tiga belas',
