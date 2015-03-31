@@ -49,9 +49,9 @@ senilai seratus dua puluh tiga ribu, empat ratus lima puluh enam rupiah
 ```
 Syntax : 
 ```
-Terbilang::make(654321, ' dolars');
+Terbilang::make(654321, ' dollars');
 ```
 Result `en` :
 ```
-six hundred and fifty-four thousand, three hundred and twenty-one dolars
+six hundred and fifty-four thousand, three hundred and twenty-one dollars
 ```
