@@ -1,4 +1,4 @@
-## Number To Word Conversion For Laravel 4
+## Number To Words Conversion For Laravel 4
 [![Build Status](https://travis-ci.org/riskihajar/terbilang.svg?branch=master)](https://travis-ci.org/riskihajar/terbilang)
 [![Latest Stable Version](https://poser.pugx.org/riskihajar/terbilang/v/stable.svg)](https://packagist.org/packages/riskihajar/terbilang)
 [![Total Downloads](https://poser.pugx.org/riskihajar/terbilang/downloads.svg)](https://packagist.org/packages/riskihajar/terbilang)
@@ -14,6 +14,7 @@ Number to words conversion support multi language.
 
 ### Feature
 * [Number to Word](https://github.com/riskihajar/terbilang#number-to-words)
+* [Number to Roman](https://github.com/riskihajar/terbilang#number-to-roman)
 * [Datetime to Word](https://github.com/riskihajar/terbilang#datetime)
 
 ### Usage
@@ -34,7 +35,8 @@ Add the facade of this package to the `$aliases` array.
 ```
 
 ### Examples
-#### Number To Words `Terbilang::make($number, $suffix, $prefix)`
+#### Number To Words
+`Terbilang::make($number, $suffix, $prefix)`
 if you set locale to en
 ```
 Terbilang::make(1000000); // one million
@@ -54,6 +56,12 @@ if you set locale to en
 ```
 Terbilang::make(654321, ' dollars');
 // six hundred and fifty-four thousand, three hundred and twenty-one dollars
+```
+
+#### Number to Roman
+`Terbilang::roman($number, $lowercase=false)`
+```
+Terbilang::roman(1234); //MCCXXXIV
 ```
 
 #### Datetime
