@@ -1,10 +1,14 @@
 ## Number To Word Conversion For Laravel 4
 Number to word conversion support multi language.
 
-### Supported Langugage
+### Supported Language
 * `id` | *Indonesian*
 * `en` | *English*
 * soon
+
+### Feature
+* [Number to Word](https://github.com/riskihajar/terbilang#example)
+* [Datetime to Word](https://github.com/riskihajar/terbilang#datetime)
 
 ### Usage
 
@@ -54,4 +58,39 @@ Terbilang::make(654321, ' dollars');
 Result `en` :
 ```
 six hundred and fifty-four thousand, three hundred and twenty-one dollars
+```
+
+#### Datetime
+#### Date `Terbilang::date($date, $format='Y-m-d');`
+```
+<?php
+
+$date = date('Y-m-d'); // 2015-03-31
+Terbilang::date($date);
+// Result : tiga puluh satu maret dua ribu lima belas
+```
+#### Time `Terbilang::time($date, $format='h:i:s');`
+```
+<?php
+$date = date('h:i:s'); //10:56:30
+Terbilang::time($date);
+// Result : sepuluh lewat lima puluh enam menit tiga puluh tiga detik
+```
+#### Date Time `Terbilang::datetime($date, $format='Y-m-d h:i:s');`
+```
+<?php
+$date = date('Y-m-d h:i:s'); // 2015-03-31 10:58:27:
+Terbilang::datetime($date);
+// Result : tiga puluh satu maret dua ribu lima belas pukul sepuluh lewat lima puluh delapan menit dua puluh tujuh detik
+```
+#### Using Carbon
+if using carbon, you can ignore `$format`
+```
+<?php
+
+$dt = Carbon\Carbon::now('Asia/Makassar');
+
+$date = Terbilang::date($dt);
+$time = Terbilang::time($dt);
+$datetime = Terbilang::datetime($dt);
 ```
