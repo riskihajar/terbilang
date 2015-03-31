@@ -3,7 +3,7 @@
     "description": "Convert number to word in any language for Laravel 4",
     "homepage": "https://github.com/riskihajar/terbilang",
     "license": "MIT",
-    "keywords": ["laravel", "terbilang", "number to word"],
+    "keywords": ["laravel", "terbilang", "number to words"],
     "authors": [
         {
             "name": "riskihajar",
@@ -23,5 +23,5 @@
             "Riskihajar\\Terbilang\\": "src/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev"
 }
