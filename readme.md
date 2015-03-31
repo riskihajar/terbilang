@@ -8,8 +8,8 @@
 Number to words conversion support multi language.
 
 ### Supported Language
-* `id` | *Indonesian*
-* `en` | *English*
+* `id` | Bahasa Indonesia
+* `en` | English
 * soon
 
 ### Feature
