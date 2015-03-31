@@ -113,4 +113,63 @@ class Terbilang{
 
         return $prefix . $string . $suffix;
     }
+
+    public function date($date, $format='Y-m-d')
+    {
+        if( ! self::is_carbon($date) ) $date = date_create_from_format($format, $date);
+        if ( ! is_object($date) ){
+            return 'Invalid Date or Format';
+        }
+
+        $day = $date->format('j');
+        $month = $date->format('n');
+        $year = $date->format('Y');
+
+        return sprintf('%s %s %s', $this->make($day), strtolower(Lang::get('terbilang::tanggal.month.' . $month ) ), $this->make($year));
+    }
+
+    public function time($time, $format='h:i:s')
+    {
+        if( ! self::is_carbon($time) ) $time = date_create_from_format($format, $time);
+
+        if ( ! is_object($time) ){
+            return 'Invalid Date or Format';
+        }
+
+        $hour = $time->format('G');
+        $minute = $time->format('i');
+        $second = (int) $time->format('s');
+
+        $separator  = Lang::get('terbilang::tanggal.time.minute-separator');
+        $minute_str = Lang::get('terbilang::tanggal.time.minute');
+        $second_str = $second ? Lang::get('terbilang::tanggal.time.second') : null;
+
+        return sprintf('%s %s %s %s %s %s', $this->make($hour), $separator, $this->make($minute), $minute_str, $second ? $this->make($second) : '', $second_str);
+    }
+
+    protected static function is_carbon($object)
+    {
+        if( is_object($object) ) {
+            if (get_class($object) === 'Carbon\\Carbon') {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function datetime($datetime, $format='Y-m-d h:i:s')
+    {
+        if( ! self::is_carbon($datetime) ) $datetime = date_create_from_format($format, $datetime);
+
+        if ( ! is_object($datetime) ){
+            return 'Invalid Date or Format';
+        }
+
+        $date = $datetime->format('Y-m-d');
+        $time = $datetime->format('h:i:s');
+        $separator = Lang::get('terbilang::tanggal.time.dt-separator');
+
+        return sprintf('%s %s %s', $this->date($date), $separator, $this->time($time));
+    }
 }
