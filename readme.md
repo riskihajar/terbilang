@@ -72,6 +72,7 @@ Terbilang::date($date);
 ##### Time `Terbilang::time($date, $format='h:i:s');`
 ```
 <?php
+
 $date = date('h:i:s'); //10:56:30
 Terbilang::time($date);
 // Result : sepuluh lewat lima puluh enam menit tiga puluh tiga detik
@@ -79,7 +80,8 @@ Terbilang::time($date);
 ##### Date Time `Terbilang::datetime($date, $format='Y-m-d h:i:s');`
 ```
 <?php
-$date = date('Y-m-d h:i:s'); // 2015-03-31 10:58:27:
+
+$date = date('Y-m-d h:i:s'); // 2015-03-31 10:58:27
 Terbilang::datetime($date);
 // Result : tiga puluh satu maret dua ribu lima belas pukul sepuluh lewat lima puluh delapan menit dua puluh tujuh detik
 ```
