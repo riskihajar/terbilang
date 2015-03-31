@@ -1,5 +1,11 @@
 ## Number To Word Conversion For Laravel 4
-Number to word conversion support multi language.
+[![Build Status](https://travis-ci.org/riskihajar/terbilang-php.svg?branch=master)](https://travis-ci.org/riskihajar/terbilang-php)
+[![Latest Stable Version](https://poser.pugx.org/riskihajar/terbilang/v/stable.svg)](https://packagist.org/packages/riskihajar/terbilang)
+[![Total Downloads](https://poser.pugx.org/riskihajar/terbilang/downloads.svg)](https://packagist.org/packages/riskihajar/terbilang)
+[![Latest Unstable Version](https://poser.pugx.org/riskihajar/terbilang/v/unstable.svg)](https://packagist.org/packages/riskihajar/terbilang)
+[![License](https://poser.pugx.org/riskihajar/terbilang/license.svg)](https://github.com/riskihajar/terbilang-php/blob/master/LICENSE)
+
+Number to words conversion support multi language.
 
 ### Supported Language
 * `id` | *Indonesian*
