@@ -18,7 +18,7 @@ class TerbilangL5ServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        $this->loadTranslationsFrom(__DIR__ . '/../../lang', 'terbilang');
+        $this->loadTranslationsFrom(__DIR__ . '/../lib/lang', 'terbilang');
     }
 
     /**
