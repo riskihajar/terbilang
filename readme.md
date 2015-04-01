@@ -25,9 +25,13 @@ composer require riskihajar/terbilang --dev
 ````
 
 #### Step 2: Add Providers & Aliases
-In the `$providers` array add the service providers for this package.
+**Laravel 4** : In the `$providers` array add the service providers for this package.
 ```
 'Riskihajar\Terbilang\TerbilangServiceProvider',
+```
+**Laravel 5** : In the `$providers` array add the service providers for this package.
+```
+'Riskihajar\Terbilang\TerbilangL5ServiceProvider',
 ```
 Add the facade of this package to the `$aliases` array.
 ```
