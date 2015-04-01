@@ -18,7 +18,8 @@ class TerbilangServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('riskihajar/terbilang');
+        $path = __DIR__ . '/../lib';
+        $this->package('riskihajar/terbilang', null, $path);
 	}
 
 	/**
