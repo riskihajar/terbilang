@@ -3,7 +3,7 @@
 return array(
     'hyphen'      => ' ',
     'conjunction' => ' ',
-    'separator'   => '',
+    'separator'   => ' ',
     'negative'    => 'negatif ',
     'decimal'     => ' titik ',
     'prefix'      => '',
