@@ -1,9 +1,9 @@
 {
     "name": "riskihajar/terbilang",
-    "description": "Convert number to word in any language for Laravel 4",
+    "description": "Convert number & date to words in any language for Laravel 4 | 5",
     "homepage": "https://github.com/riskihajar/terbilang",
     "license": "MIT",
-    "keywords": ["laravel", "terbilang", "number to words"],
+    "keywords": ["laravel", "terbilang", "number to words", "date to words", "number to roman"],
     "authors": [
         {
             "name": "riskihajar",
