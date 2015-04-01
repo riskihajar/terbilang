@@ -16,9 +16,9 @@
         "illuminate/support": "~4.2||~5"
     },
     "autoload": {
-        "psr-0": {
-            "Riskihajar\\Terbilang\\": "src/"
+        "psr-4": {
+            "Riskihajar\\Terbilang\\": "src"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "stable"
 }
