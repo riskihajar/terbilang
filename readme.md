@@ -1,4 +1,4 @@
-## Number To Words Conversion For Laravel 4
+## Number To Words Conversion For Laravel 4 | 5
 [![Build Status](https://travis-ci.org/riskihajar/terbilang.svg?branch=master)](https://travis-ci.org/riskihajar/terbilang)
 [![Latest Stable Version](https://poser.pugx.org/riskihajar/terbilang/v/stable.svg)](https://packagist.org/packages/riskihajar/terbilang)
 [![Total Downloads](https://poser.pugx.org/riskihajar/terbilang/downloads.svg)](https://packagist.org/packages/riskihajar/terbilang)
@@ -47,7 +47,7 @@ Terbilang::make(1000000); // one million
 ```
 if you set locale to id
 ```
-Terbilang::make(1000000); //satu juta
+Terbilang::make(1000000); // satu juta
 ```
 
 ##### Prefix & Suffix
