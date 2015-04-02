@@ -51,7 +51,7 @@ class Terbilang{
         }
 
         if ($number < 0) {
-            return $this->negative . Helper::NumToWords(abs($number));
+            return $this->negative . $this->make(abs($number));
         }
 
         $string = $fraction = null;
