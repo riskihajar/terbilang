@@ -22,7 +22,13 @@ Number to words conversion support multi language.
 #### Step 1: Install Through Composer
 ```
 composer require riskihajar/terbilang --dev
-````
+```
+or add this to `composer.json`
+```
+    "riskihajar/terbilang": "dev-master"
+```
+then run `composer update`
+
 
 #### Step 2: Add Providers & Aliases
 **Laravel 4** : In the `$providers` array add the service providers for this package.
