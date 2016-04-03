@@ -10,6 +10,7 @@ Number to words conversion support multi language.
 ### Supported Language
 * `id` | Bahasa Indonesia
 * `en` | English
+* `pt` | Portuguese
 * soon
 
 ### Feature
