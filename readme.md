@@ -22,11 +22,11 @@ Number to words conversion support multi language.
 
 #### Step 1: Install Through Composer
 ```
-composer require riskihajar/terbilang --dev
+composer require riskihajar/terbilang
 ```
 or add this to `composer.json`
 ```
-    "riskihajar/terbilang": "dev-master"
+    "riskihajar/terbilang": "1.0.4"
 ```
 then run `composer update`
 
