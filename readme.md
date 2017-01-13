@@ -38,11 +38,11 @@ then run `composer update`
 ```
 **Laravel 5** : In the `$providers` array add the service providers for this package.
 ```
-'Riskihajar\Terbilang\TerbilangL5ServiceProvider',
+Riskihajar\Terbilang\TerbilangL5ServiceProvider::class,
 ```
 Add the facade of this package to the `$aliases` array.
 ```
-'Terbilang' => 'Riskihajar\Terbilang\Facades\Terbilang',
+'Terbilang' => Riskihajar\Terbilang\Facades\Terbilang::class,
 ```
 
 ### Examples
