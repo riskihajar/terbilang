@@ -1,4 +1,4 @@
-## Number To Words Conversion For Laravel 4 | 5
+## Number To Words Conversion For Laravel
 [![Build Status](https://travis-ci.org/riskihajar/terbilang.svg?branch=master)](https://travis-ci.org/riskihajar/terbilang)
 [![Latest Stable Version](https://poser.pugx.org/riskihajar/terbilang/v/stable.svg)](https://packagist.org/packages/riskihajar/terbilang)
 [![Total Downloads](https://poser.pugx.org/riskihajar/terbilang/downloads.svg)](https://packagist.org/packages/riskihajar/terbilang)
@@ -26,19 +26,17 @@ composer require riskihajar/terbilang
 ```
 or add this to `composer.json`
 ```
-    "riskihajar/terbilang": "1.0.4"
+    "riskihajar/terbilang": "1.0.5"
 ```
 then run `composer update`
 
+For Laravel 4 Please use `1.0.4` version
+
 
 #### Step 2: Add Providers & Aliases
-**Laravel 4** : In the `$providers` array add the service providers for this package.
+In the `$providers` array add the service providers for this package.
 ```
-'Riskihajar\Terbilang\TerbilangServiceProvider',
-```
-**Laravel 5** : In the `$providers` array add the service providers for this package.
-```
-Riskihajar\Terbilang\TerbilangL5ServiceProvider::class,
+Riskihajar\Terbilang\TerbilangServiceProvider::class,
 ```
 Add the facade of this package to the `$aliases` array.
 ```
