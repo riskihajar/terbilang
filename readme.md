@@ -26,7 +26,7 @@ composer require riskihajar/terbilang
 ```
 or add this to `composer.json`
 ```
-    "riskihajar/terbilang": "1.1^"
+    "riskihajar/terbilang": "^1.1"
 ```
 then run `composer update`
 
