@@ -18,6 +18,9 @@ class TerbilangServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
+        $this->publishes([
+            __DIR__ . '/../lib/config/terbilang.php' => config_path('terbilang.php'),
+        ], 'config');
         $this->loadTranslationsFrom(__DIR__ . '/../lib/lang', 'terbilang');
     }
 
@@ -28,8 +31,11 @@ class TerbilangServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        $this->app->singleton('terbilang', function($app)
-        {
+        $this->mergeConfigFrom(
+            __DIR__ . '/../lib/config/terbilang.php', 'terbilang'
+        );
+
+        $this->app->singleton('terbilang', function($app){
             return new Terbilang;
         });
 

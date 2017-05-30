@@ -121,11 +121,17 @@ class Terbilang{
             return 'Invalid Date or Format';
         }
 
-        $day = $date->format('j');
-        $month = $date->format('n');
-        $year = $date->format('Y');
+        $j = $date->format('j');
+        $n = $date->format('n');
+        $Y = $date->format('Y');
 
-        return sprintf('%s %s %s', $this->make($day), strtolower(Lang::get('terbilang::tanggal.month.' . $month ) ), $this->make($year));
+        $day = $this->make($j);
+        $month = strtolower(Lang::get('terbilang::tanggal.month.'.$n));
+        $year = $this->make($Y);
+
+        $template = config('terbilang.output.date', '{DAY} {MONTH} {YEAR}');
+
+        return str_replace(['{DAY}', '{MONTH}', '{YEAR}'], [$day, $month, $year], $template);
     }
 
     public function time($time, $format='h:i:s')
@@ -136,15 +142,26 @@ class Terbilang{
             return 'Invalid Date or Format';
         }
 
-        $hour = $time->format('G');
-        $minute = $time->format('i');
-        $second = (int) $time->format('s');
+        $G = $time->format('G');
+        $i = $time->format('i');
+        $s = (int) $time->format('s') ?: null;
 
         $separator  = Lang::get('terbilang::tanggal.time.minute-separator');
         $minute_str = Lang::get('terbilang::tanggal.time.minute');
-        $second_str = $second ? Lang::get('terbilang::tanggal.time.second') : null;
+        $second_str = $s ? Lang::get('terbilang::tanggal.time.second') : null;
 
-        return sprintf('%s %s %s %s %s %s', $this->make($hour), $separator, $this->make($minute), $minute_str, $second ? $this->make($second) : '', $second_str);
+        $hour = $this->make($G);
+        $minute = $this->make($i);
+        $second = $this->make($s);
+
+        $template = config('terbilang.output.time', '{HOUR} {SEPARATOR} {MINUTE} {MINUTE_LABEL} {SECOND} {SECOND_LABEL}');
+
+        return str_replace([
+            '{HOUR}','{SEPARATOR}','{MINUTE}','{MINUTE_LABEL}','{SECOND}','{SECOND_LABEL}'
+        ],
+        [
+            $hour, $separator, $minute, $minute_str, $second, $second_str
+        ], $template);
     }
 
     protected static function is_carbon($object)
