@@ -126,7 +126,7 @@ class Terbilang{
         $Y = $date->format('Y');
 
         $day = $this->make($j);
-        $month = strtolower(Lang::get('terbilang::tanggal.month.'.$n));
+        $month = strtolower(Lang::get('terbilang::date.month.'.$n));
         $year = $this->make($Y);
 
         $template = config('terbilang.output.date', '{DAY} {MONTH} {YEAR}');
@@ -146,9 +146,9 @@ class Terbilang{
         $i = $time->format('i');
         $s = (int) $time->format('s') ?: null;
 
-        $separator  = Lang::get('terbilang::tanggal.time.minute-separator');
-        $minute_str = Lang::get('terbilang::tanggal.time.minute');
-        $second_str = $s ? Lang::get('terbilang::tanggal.time.second') : null;
+        $separator  = Lang::get('terbilang::date.time.minute-separator');
+        $minute_str = Lang::get('terbilang::date.time.minute');
+        $second_str = $s ? Lang::get('terbilang::date.time.second') : null;
 
         $hour = $this->make($G);
         $minute = $this->make($i);
@@ -185,7 +185,7 @@ class Terbilang{
 
         $date = $datetime->format('Y-m-d');
         $time = $datetime->format('h:i:s');
-        $separator = Lang::get('terbilang::tanggal.time.dt-separator');
+        $separator = Lang::get('terbilang::date.time.dt-separator');
 
         return sprintf('%s %s %s', $this->date($date), $separator, $this->time($time));
     }
