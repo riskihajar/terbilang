@@ -139,14 +139,16 @@ class Terbilang{
         }
 
         /* If Divider Using Alias or short hand */
-        if( strlen($format) === 1 ){
-            $format = array_get($this->shortDividerAliases, $format, 'million');
+        if( strlen($format) === 1 && array_key_exists($format, $this->shortDividerAliases)){
+            $format = $this->shortDividerAliases[$format];
+        }else{
+            $format = 'million';
         }
 
         /* Get Divider */
-        $divider = array_get($this->shortDividers, $format, 1);
+        $divider = $this->shortDividers[$format];
         /* Suffix */
-        $suffix = array_get($this->short, $format);
+        $suffix = $this->short[$format];
 
         /* Process result */
         $result = round(doubleval($number) / $divider, 2);
