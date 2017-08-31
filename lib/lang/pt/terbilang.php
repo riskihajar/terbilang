@@ -8,6 +8,12 @@ return array(
     'prefix'      => '',
     'suffix'      => '',
     'prenum'      => '',
+    'short' => [
+        'kilo' => 'k',
+        'million' => 'M',
+        'billion' => 'B',
+        'trillion' => 'T'
+    ],
     'dictionary'  => array(
         0                   => 'zero',
         1                   => 'um',

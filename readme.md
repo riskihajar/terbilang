@@ -16,6 +16,7 @@ Number to words conversion support multi language.
 ### Feature
 * [Number to Word](https://github.com/riskihajar/terbilang#number-to-words)
 * [Number to Roman](https://github.com/riskihajar/terbilang#number-to-roman)
+* [Number Short Hand](https://github.com/riskihajar/terbilang#number-short-hand)
 * [Datetime to Word](https://github.com/riskihajar/terbilang#datetime)
 
 ### Usage
@@ -46,6 +47,7 @@ Add the facade of this package to the `$aliases` array.
 ### Examples
 #### Number To Words
 `Terbilang::make($number, $suffix, $prefix)`
+
 if you set locale to en
 ```
 Terbilang::make(1000000); // one million
@@ -71,6 +73,22 @@ Terbilang::make(654321, ' dollars');
 `Terbilang::roman($number, $lowercase=false)`
 ```
 Terbilang::roman(1234); //MCCXXXIV
+```
+
+#### Number Short Hand
+`Terbilang::short($number, $format)`
+
+Available short hand : `kilo, million, billion, trillion`
+
+Default value : `million`
+
+if you set locale to en
+```
+Terbilang::short(1000000); // 1M
+```
+if you set locale to id
+```
+Terbilang::short(1000000); // 1jt
 ```
 
 #### Datetime

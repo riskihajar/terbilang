@@ -9,6 +9,12 @@ return array(
     'prefix'      => '',
     'suffix'      => '',
     'prenum'      => 'se',
+    'short' => [
+        'kilo' => 'k',
+        'million' => 'jt',
+        'billion' => 'M',
+        'trillion' => 'T'
+    ],
     'dictionary'  => array(
         0                   => 'nol',
         1                   => 'satu',

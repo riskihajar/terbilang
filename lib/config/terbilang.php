@@ -14,4 +14,14 @@ return [
        'date' => '{DAY} {MONTH} {YEAR}',
        'time' => '{HOUR} {SEPARATOR} {MINUTE} {MINUTE_LABEL} {SECOND} {SECOND_LABEL}'
    ],
+   /*
+   |--------------------------------------------------------------------------
+   | Short Output
+   |--------------------------------------------------------------------------
+   |
+   | This value is short config
+   | default value is million
+   | available value 'kilo, million, billion, trillion'
+   */
+   'short' => 'million'
 ];

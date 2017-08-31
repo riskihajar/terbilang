@@ -17,6 +17,20 @@ class Terbilang{
 
     protected $lang;
 
+    protected $shortDividers = [
+        'kilo' => 1000,
+        'million' => 1000000,
+        'billion' => 1000000000,
+        'trillion' => 1000000000000
+    ];
+
+    protected $shortDividerAliases = [
+        'k' => 'kilo',
+        'm' => 'million',
+        'b' => 'billion',
+        't' => 'trillion',
+    ];
+
     public function __construct()
     {
         $this->hyphen      = Lang::get('terbilang::terbilang.hyphen');
@@ -28,6 +42,7 @@ class Terbilang{
         $this->prefix      = Lang::get('terbilang::terbilang.prefix');
         $this->suffix      = Lang::get('terbilang::terbilang.suffix');
         $this->prenum      = Lang::get('terbilang::terbilang.prenum');
+        $this->short       = Lang::get('terbilang::terbilang.short');
 
         $this->lang = Config::get('app.locale');
     }
@@ -115,6 +130,28 @@ class Terbilang{
         }
 
         return $prefix . $string . $suffix;
+    }
+
+    public function short($number, $format=null)
+    {
+        if(is_null($format)){
+            $format = config('terbilang.short', 'million', 'm');
+        }
+
+        /* If Divider Using Alias or short hand */
+        if( strlen($format) === 1 ){
+            $format = array_get($this->shortDividerAliases, $format, 'million');
+        }
+
+        /* Get Divider */
+        $divider = array_get($this->shortDividers, $format, 1);
+        /* Suffix */
+        $suffix = array_get($this->short, $format);
+
+        /* Process result */
+        $result = round(doubleval($number) / $divider, 2);
+
+        return sprintf('%g%s', $result, $suffix);
     }
 
     public function date($date, $format='Y-m-d')
