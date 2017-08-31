@@ -41,6 +41,9 @@ class Terbilang{
             return false;
         }
 
+        // parse quoted value
+        $number = doubleval($number);
+
         if (($number >= 0 && (int) $number < 0) || (int) $number < 0 - PHP_INT_MAX) {
             // overflow
             trigger_error(
