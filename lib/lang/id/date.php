@@ -28,5 +28,14 @@ return array (
         'minute-separator' => 'lewat',
         'minute'           => 'menit',
         'second'           => 'detik'
+    ),
+    'dictionary' => array(
+        'second' => 'detik',
+        'minute' => 'menit',
+        'hour' => 'jam',
+        'day' => 'hari',
+        'month' => 'bulan',
+        'year' => 'tahun',
+        'week' => 'minggu',
     )
 );

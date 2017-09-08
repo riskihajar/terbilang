@@ -28,5 +28,14 @@ return array (
         'minute-separator' => 'past',
         'minute'           => 'minutes',
         'second'           => 'seconds'
+    ),
+    'dictionary' => array(
+        'second' => 'seconds',
+        'minute' => 'minutes',
+        'hour' => 'hours',
+        'day' => 'days',
+        'month' => 'months',
+        'year' => 'years',
+        'week' => 'weeks',
     )
 );
