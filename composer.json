@@ -20,5 +20,15 @@
             "Riskihajar\\Terbilang\\": "src"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Riskihajar\\Terbilang\\TerbilangServiceProvider"
+            ],
+            "aliases": {
+                "Terbilang": "Riskihajar\\Terbilang\\Facades\\Terbilang"
+            }
+        }
+    }
 }
