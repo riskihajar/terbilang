@@ -28,7 +28,7 @@ composer require riskihajar/terbilang
 ```
 or add this to `composer.json`
 ```
-    "riskihajar/terbilang": "^1.1"
+    "riskihajar/terbilang": "^1.2"
 ```
 then run `composer update`
 
@@ -128,8 +128,7 @@ $datetime = Terbilang::datetime($dt);
 ```
 
 #### Period
-You can diff two dates or just one date and automatically with current date use method
-`Terbilang::period($start, $end=null, $format=null)`
+You can diff two dates or just one date and automaticly with current date use method `Terbilang::period($start, $end=null, $format=null)`
 
 ##### Config for period format
 ```
