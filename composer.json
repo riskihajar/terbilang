@@ -16,7 +16,7 @@
         "illuminate/support": "~4.2||~5"
     },
     "require-dev": {
-        "orchestra/testbench": "3.5.x-dev"
+        "orchestra/testbench": "^3.5"
     },
     "autoload": {
         "psr-4": {
@@ -28,7 +28,7 @@
             "Tests\\": "tests/"
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "extra": {
         "laravel": {
             "providers": [
