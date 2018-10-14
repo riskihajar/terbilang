@@ -15,12 +15,20 @@
         "php": ">=5.4.0",
         "illuminate/support": "~4.2||~5"
     },
+    "require-dev": {
+        "orchestra/testbench": "~3.0"
+    },
     "autoload": {
         "psr-4": {
             "Riskihajar\\Terbilang\\": "src"
         }
     },
-    "minimum-stability": "dev",
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
     "extra": {
         "laravel": {
             "providers": [
