@@ -10,7 +10,7 @@ abstract class TestCase extends BaseTestCase
 {
     protected $terbilang;
 
-    protected function setUp()
+    protected function setUp() : void
     {
         parent::setUp();
         $this->terbilang = new Terbilang();
