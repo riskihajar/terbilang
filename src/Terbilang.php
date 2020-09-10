@@ -56,8 +56,11 @@ class Terbilang{
             return false;
         }
 
-        // parse quoted value
+        // parse quoted value and make sure its number
         $number = doubleval($number);
+
+        // handle scientific value like 1.0E+15 after parse quoted
+        $number = sprintf('%0d', $number);
 
         if (($number >= 0 && (int) $number < 0) || (int) $number < 0 - PHP_INT_MAX) {
             // overflow
@@ -74,9 +77,11 @@ class Terbilang{
 
         $string = $fraction = null;
 
+        // dd($number);
         if (strpos($number, '.') !== false) {
             list($number, $fraction) = explode('.', $number);
         }
+
 
         switch (true) {
             case $number < 21:
@@ -107,6 +112,7 @@ class Terbilang{
                 $baseUnit = pow(1000, floor(log($number, 1000)));
                 $numBaseUnits = (int) ($number / $baseUnit);
                 $remainder = $number % $baseUnit;
+
                 if($this->prenum) {
                     $string = ($numBaseUnits === 1 && $baseUnit < 1000000 ? $this->prenum : $this->make($numBaseUnits) . ' ') . $this->dictionary[$baseUnit];
                 }else{
