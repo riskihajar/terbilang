@@ -2,9 +2,9 @@
 
 namespace Riskihajar\Terbilang;
 
+use Riskihajar\Terbilang\Commands\TerbilangCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Riskihajar\Terbilang\Commands\TerbilangCommand;
 
 class TerbilangServiceProvider extends PackageServiceProvider
 {

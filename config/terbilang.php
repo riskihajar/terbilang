@@ -14,7 +14,7 @@ return [
     */
     'output' => [
         'date' => '{DAY} {MONTH} {YEAR}',
-        'time' => '{HOUR} {SEPARATOR} {MINUTE} {MINUTE_LABEL} {SECOND} {SECOND_LABEL}'
+        'time' => '{HOUR} {SEPARATOR} {MINUTE} {MINUTE_LABEL} {SECOND} {SECOND_LABEL}',
     ],
 
     /*
@@ -27,7 +27,6 @@ return [
     | available value 'kilo, million, billion, trillion'
     */
     'short' => 'million',
-
 
     /*
     |--------------------------------------------------------------------------
@@ -50,6 +49,6 @@ return [
             'hour' => true,
             'minute' => true,
             'second' => true,
-        ]
+        ],
     ],
 ];

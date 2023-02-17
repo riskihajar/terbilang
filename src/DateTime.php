@@ -1,4 +1,5 @@
 <?php
+
 namespace Riskihajar\Terbilang;
 
 use Carbon\Carbon;
@@ -8,17 +9,15 @@ class DateTime
 {
     public function date()
     {
-
     }
 
     public function time()
     {
-
     }
 
     public function datetime($datetime, $format = 'Y-m-d h:i:s'): Stringable
     {
-        if (!$datetime instanceof Carbon) {
+        if (! $datetime instanceof Carbon) {
             $datetime = Carbon::createFromFormat($format, $datetime);
         }
 
@@ -26,7 +25,7 @@ class DateTime
         $time = $datetime->format('h:i:s');
         $separator = Lang::get('terbilang::date.time.dt-separator');
 
-        $string = implode(" ", array_filter([
+        $string = implode(' ', array_filter([
             $this->date($date),
             $separator,
             $this->time($time),

@@ -1,9 +1,10 @@
 <?php
+
 namespace Riskihajar\Terbilang;
 
-use Riskihajar\Terbilang\Enums\LargeNumber as Enum;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
+use Riskihajar\Terbilang\Enums\LargeNumber as Enum;
 
 class LargeNumber
 {
