@@ -3,7 +3,6 @@
 namespace Riskihajar\Terbilang\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Lang;
 use Riskihajar\Terbilang\Enums\LargeNumber;
 
 class TerbilangCommand extends Command

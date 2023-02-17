@@ -3,8 +3,8 @@
 namespace Riskihajar\Terbilang;
 
 use Carbon\Carbon;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Str;
 
 class DateTime
 {
@@ -26,11 +26,11 @@ class DateTime
         $string = str_replace([
             '{DAY}',
             '{MONTH}',
-            '{YEAR}'
+            '{YEAR}',
         ], [
             $day,
             $month,
-            $year
+            $year,
         ], $template);
 
         return Str::of($string);
