@@ -3,6 +3,7 @@
 namespace Riskihajar\Terbilang\Commands;
 
 use Illuminate\Console\Command;
+use Riskihajar\Terbilang\Enums\LargeNumber;
 
 class TerbilangCommand extends Command
 {
@@ -14,9 +15,12 @@ class TerbilangCommand extends Command
     {
         $number = $this->argument('number');
 
-        $result = \Riskihajar\Terbilang\Facades\Terbilang::roman($number);
+        $result = \Riskihajar\Terbilang\Facades\Terbilang::largeNumber(
+            number: $number,
+            target: LargeNumber::Kilo,
+        );
 
-        dd($result->lower());
+        dd($result);
 
         // $ln = \Riskihajar\Terbilang\Enums\LargeNumber::Million;
 
