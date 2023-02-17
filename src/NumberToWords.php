@@ -2,23 +2,32 @@
 
 namespace Riskihajar\Terbilang;
 
-use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Stringable;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
+use Illuminate\Support\Stringable;
 use Riskihajar\Terbilang\Exceptions\Number;
 
 class NumberToWords
 {
     private $hyphen;
+
     private $conjunction;
+
     private $separator;
+
     private $negative;
+
     private $decimal;
+
     private $dictionary;
+
     private $prefix;
+
     private $suffix;
+
     private $prenum;
+
     private $lang;
 
     public function __construct()
@@ -36,10 +45,6 @@ class NumberToWords
         $this->lang = Config::get('app.locale');
     }
 
-    /**
-     * @param string|null $suffix
-     * @return NumberToWords
-     */
     public function suffix(string|null $suffix): self
     {
         $this->suffix = $suffix;
@@ -47,10 +52,6 @@ class NumberToWords
         return $this;
     }
 
-    /**
-     * @param string|null $prefix
-     * @return NumberToWords
-     */
     public function prefix(string|null $prefix): self
     {
         $this->prefix = $prefix;
@@ -59,46 +60,43 @@ class NumberToWords
     }
 
     /**
-     * @param mixed $number
-     * @return mixed
      * @throws Number
      */
     private function parseNumber(mixed $number): mixed
     {
         // parse quoted value and make sure its number
-        $number = doubleval($number);
+        $number = floatval($number);
 
         // handle scientific value like 1.0E+15 after parse quoted
         $number = sprintf('%0d', $number);
 
-        if ( ($number >= 0 && intval($number) < 0) || (intval($number) < 0 - PHP_INT_MAX)) {
+        if (($number >= 0 && intval($number) < 0) || (intval($number) < 0 - PHP_INT_MAX)) {
             throw Exceptions\Number::exceed();
         }
-
 
         return $number;
     }
 
     /**
-     * @param mixed $number
-     * @return Stringable
+     * @param  mixed  $number
+     *
      * @throws Number
      */
     public function make($number): Stringable
     {
-        if(!is_numeric($number)){
+        if (! is_numeric($number)) {
             throw Exceptions\Number::notNumeric();
         }
 
         $number = $this->parseNumber(number: $number);
 
-        if($number < 0) {
+        if ($number < 0) {
             return $this->make(number: abs($number))->prepend($this->negative, ' ');
         }
 
         $string = $fraction = null;
 
-        if(strpos($number, '.') !== false) {
+        if (strpos($number, '.') !== false) {
             [$number, $fraction] = explode('.', $number);
         }
 
@@ -107,24 +105,24 @@ class NumberToWords
                 $string = $this->dictionary[$number];
                 break;
             case $number < 100:
-                $tens   = ((int) ($number / 10)) * 10;
-                $units  = $number % 10;
+                $tens = ((int) ($number / 10)) * 10;
+                $units = $number % 10;
                 $string = $this->dictionary[$tens];
                 if ($units) {
-                    $string .= $this->hyphen . $this->dictionary[$units];
+                    $string .= $this->hyphen.$this->dictionary[$units];
                 }
                 break;
             case $number < 1000:
-                $hundreds  = $number / 100;
+                $hundreds = $number / 100;
                 $remains = $number % 100;
                 if ($this->prenum) {
                     $lead = (int) substr($number, 0, 1);
-                    $string = ($lead === 1 ? $this->prenum : $this->dictionary[$hundreds] . ' ') . $this->dictionary[100];
+                    $string = ($lead === 1 ? $this->prenum : $this->dictionary[$hundreds].' ').$this->dictionary[100];
                 } else {
-                    $string = $this->dictionary[$hundreds] . ' ' . $this->dictionary[100];
+                    $string = $this->dictionary[$hundreds].' '.$this->dictionary[100];
                 }
                 if ($remains) {
-                    $string .= $this->conjunction . $this->make($remains);
+                    $string .= $this->conjunction.$this->make($remains);
                 }
                 break;
             default:
@@ -133,9 +131,9 @@ class NumberToWords
                 $remains = $number % $baseUnit;
 
                 if ($this->prenum) {
-                    $string = ($numBaseUnits === 1 && $baseUnit < 1000000 ? $this->prenum : $this->make($numBaseUnits) . ' ') . $this->dictionary[$baseUnit];
+                    $string = ($numBaseUnits === 1 && $baseUnit < 1000000 ? $this->prenum : $this->make($numBaseUnits).' ').$this->dictionary[$baseUnit];
                 } else {
-                    $string = $this->make($numBaseUnits) . ' ' . $this->dictionary[$baseUnit];
+                    $string = $this->make($numBaseUnits).' '.$this->dictionary[$baseUnit];
                 }
 
                 if ($remains) {
@@ -147,7 +145,7 @@ class NumberToWords
 
         if (null !== $fraction && is_numeric($fraction)) {
             $string .= $this->decimal;
-            $words = array();
+            $words = [];
             foreach (str_split((string) $fraction) as $number) {
                 $words[] = $this->dictionary[$number];
             }
@@ -158,5 +156,4 @@ class NumberToWords
             ->prepend($this->prefix, $this->prefix ? ' ' : '')
             ->append($this->suffix, $this->suffix ? ' ' : '');
     }
-
 }

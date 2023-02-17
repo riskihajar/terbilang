@@ -1,6 +1,7 @@
 <?php
 
 namespace Riskihajar\Terbilang\Enums;
+
 use Illuminate\Support\Facades\Lang;
 
 enum LargeNumber: string
