@@ -29,6 +29,15 @@ return [
         'minute-separator' => 'lewat',
         'minute' => 'menit',
         'second' => 'detik',
+        'am' => [ // sort by large clock first
+            11 => 'siang',
+            0 => 'pagi',
+        ],
+        'pm' => [ // sort by large clock first
+            19 => 'malam',
+            13 => 'sore',
+            12 => 'siang',
+        ],
     ],
     'dictionary' => [
         'second' => 'detik',

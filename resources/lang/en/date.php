@@ -29,6 +29,8 @@ return [
         'minute-separator' => 'past',
         'minute' => 'minutes',
         'second' => 'seconds',
+        'am' => 'am',
+        'pm' => 'pm',
     ],
     'dictionary' => [
         'second' => 'seconds',
