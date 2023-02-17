@@ -3,6 +3,7 @@
 namespace Riskihajar\Terbilang\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Lang;
 use Riskihajar\Terbilang\Enums\LargeNumber;
 
 class TerbilangCommand extends Command
@@ -20,7 +21,7 @@ class TerbilangCommand extends Command
             target: LargeNumber::Kilo,
         );
 
-        dd($result);
+        // dd($result);
 
         // $ln = \Riskihajar\Terbilang\Enums\LargeNumber::Million;
 
