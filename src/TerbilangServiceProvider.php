@@ -18,6 +18,7 @@ class TerbilangServiceProvider extends PackageServiceProvider
         $package
             ->name('terbilang')
             ->hasConfigFile()
+            ->hasTranslations()
             ->hasViews()
             ->hasMigration('create_terbilang_table')
             ->hasCommand(TerbilangCommand::class);
