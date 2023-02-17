@@ -3,7 +3,6 @@
 namespace Riskihajar\Terbilang;
 
 use Illuminate\Support\Stringable;
-use Riskihajar\Terbilang\Enums;
 
 class Terbilang
 {
