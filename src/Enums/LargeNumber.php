@@ -1,6 +1,7 @@
 <?php
 
 namespace Riskihajar\Terbilang\Enums;
+use Illuminate\Support\Facades\Lang;
 
 enum LargeNumber: string
 {
@@ -21,14 +22,10 @@ enum LargeNumber: string
         };
     }
 
-    public function abbreviation(): string
+    public function abbreviation(): string|null
     {
-        return match ($this) {
-            self::Kilo => 'k',
-            self::Million => 'm',
-            self::Billion => 'b',
-            self::Trilion => 't',
-            self::Quadrillion => 'q',
-        };
+        $dictionary = Lang::get('terbilang::terbilang.large-number');
+
+        return $dictionary[$this->value] ?? null;
     }
 }

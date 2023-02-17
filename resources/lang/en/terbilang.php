@@ -9,7 +9,7 @@ return [
     'prefix' => '',
     'suffix' => '',
     'prenum' => '',
-    'short' => [
+    'large-number' => [
         'kilo' => 'k',
         'million' => 'M',
         'billion' => 'B',
