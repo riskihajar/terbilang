@@ -60,7 +60,7 @@ class NumberToWords
     }
 
     /**
-     * @throws Number
+     * @throws InvalidNumber
      */
     private function parseNumber(mixed $number): mixed
     {
@@ -71,7 +71,7 @@ class NumberToWords
         $number = sprintf('%0d', $number);
 
         if (($number >= 0 && intval($number) < 0) || (intval($number) < 0 - PHP_INT_MAX)) {
-            throw Exceptions\Number::exceed();
+            throw Exceptions\InvalidNumber::isExceed();
         }
 
         return $number;
@@ -80,12 +80,12 @@ class NumberToWords
     /**
      * @param  mixed  $number
      *
-     * @throws Number
+     * @throws InvalidNumber
      */
     public function make($number): Stringable
     {
         if (! is_numeric($number)) {
-            throw Exceptions\Number::notNumeric();
+            throw Exceptions\InvalidNumber::isNotNumeric();
         }
 
         $number = $this->parseNumber(number: $number);
