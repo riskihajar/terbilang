@@ -4,21 +4,31 @@ namespace Riskihajar\Terbilang;
 
 use Carbon\Carbon;
 use DateInterval;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
+use Psr\Container\NotFoundExceptionInterface;
+use Psr\Container\ContainerExceptionInterface;
 use Riskihajar\Terbilang\Enums\DistanceDate as Enum;
+use Riskihajar\Terbilang\Exceptions\InvalidNumber;
 
+/** @package Riskihajar\Terbilang */
 class DistanceDate
 {
     private array $config = [];
 
+    /** @return void  */
     public function __construct()
     {
         $this->config = Config::get('terbilang.distance', []);
     }
 
+    /**
+     * @param array $config
+     * @return DistanceDate
+     */
     public function config(array $config): self
     {
         $this->config = array_merge($this->config, $config);
@@ -26,6 +36,15 @@ class DistanceDate
         return $this;
     }
 
+    /**
+     * @param Carbon $start
+     * @param null|Carbon $end
+     * @return Stringable
+     * @throws BindingResolutionException
+     * @throws NotFoundExceptionInterface
+     * @throws ContainerExceptionInterface
+     * @throws InvalidNumber
+     */
     public function make(
         Carbon $start,
         Carbon|null $end = null): Stringable
@@ -45,6 +64,14 @@ class DistanceDate
         }
     }
 
+    /**
+     * @param DateInterval $interval
+     * @return Stringable
+     * @throws BindingResolutionException
+     * @throws NotFoundExceptionInterface
+     * @throws ContainerExceptionInterface
+     * @throws InvalidNumber
+     */
     private function full(DateInterval $interval): Stringable
     {
         $result = $interval->format('%y %m %d %h %i %s');
@@ -109,6 +136,12 @@ class DistanceDate
         return Str::of(implode(' ', $results))->trim();
     }
 
+    /**
+     * @param DateInterval $interval
+     * @param Enum $type
+     * @return Stringable
+     * @throws InvalidNumber
+     */
     private function type(DateInterval $interval, Enum $type): Stringable
     {
         $terbilang = $this->config['terbilang'];

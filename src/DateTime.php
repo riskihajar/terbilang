@@ -3,13 +3,27 @@
 namespace Riskihajar\Terbilang;
 
 use Carbon\Carbon;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
+use Riskihajar\Terbilang\Exceptions\InvalidNumber;
+use Psr\Container\NotFoundExceptionInterface;
+use Psr\Container\ContainerExceptionInterface;
 
+/** @package Riskihajar\Terbilang */
 class DateTime
 {
-    public function date(Carbon|string $date, string $format = 'Y-m-d')
+    /**
+     * @param Carbon|string $date
+     * @param string $format
+     * @return Stringable
+     * @throws InvalidNumber
+     * @throws BindingResolutionException
+     * @throws NotFoundExceptionInterface
+     * @throws ContainerExceptionInterface
+     */
+    public function date(Carbon|string $date, string $format = 'Y-m-d'): Stringable
     {
         if (! $date instanceof Carbon) {
             $date = Carbon::createFromFormat($format, $date);
@@ -39,7 +53,16 @@ class DateTime
         return Str::of($string);
     }
 
-    public function time(Carbon|string $time, string $format = 'h:i:s'): Stringable
+    /**
+     * @param Carbon|string $time
+     * @param string $format
+     * @return Stringable
+     * @throws InvalidNumber
+     * @throws BindingResolutionException
+     * @throws NotFoundExceptionInterface
+     * @throws ContainerExceptionInterface
+     */
+    public function time(Carbon|string $time, string $format = 'H:i:s'): Stringable
     {
         if (! $time instanceof Carbon) {
             $time = Carbon::createFromFormat($format, $time);
@@ -74,6 +97,15 @@ class DateTime
         return Str::of($string)->trim();
     }
 
+    /**
+     * @param Carbon|string $datetime
+     * @param string $format
+     * @return Stringable
+     * @throws InvalidNumber
+     * @throws BindingResolutionException
+     * @throws NotFoundExceptionInterface
+     * @throws ContainerExceptionInterface
+     */
     public function datetime(Carbon|string $datetime, string $format = 'Y-m-d H:i:s'): Stringable
     {
         if (! $datetime instanceof Carbon) {
