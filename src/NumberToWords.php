@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
 
-/** @package Riskihajar\Terbilang */
 class NumberToWords
 {
     private $hyphen;
@@ -41,10 +40,6 @@ class NumberToWords
         $this->prenum = Lang::get('terbilang::terbilang.prenum');
     }
 
-    /**
-     * @param string|null $suffix
-     * @return NumberToWords
-     */
     public function suffix(string|null $suffix): self
     {
         $this->suffix = $suffix;
@@ -52,10 +47,6 @@ class NumberToWords
         return $this;
     }
 
-    /**
-     * @param string|null $prefix
-     * @return NumberToWords
-     */
     public function prefix(string|null $prefix): self
     {
         $this->prefix = $prefix;
@@ -64,8 +55,6 @@ class NumberToWords
     }
 
     /**
-     * @param mixed $number
-     * @return mixed
      * @throws Exceptions\InvalidNumber
      */
     private function parseNumber(mixed $number): mixed
@@ -84,8 +73,6 @@ class NumberToWords
     }
 
     /**
-     * @param mixed $number
-     * @return Stringable
      * @throws Exceptions\InvalidNumber
      */
     public function make(mixed $number): Stringable

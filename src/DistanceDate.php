@@ -9,12 +9,11 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
-use Psr\Container\NotFoundExceptionInterface;
 use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use Riskihajar\Terbilang\Enums\DistanceDate as Enum;
 use Riskihajar\Terbilang\Exceptions\InvalidNumber;
 
-/** @package Riskihajar\Terbilang */
 class DistanceDate
 {
     private array $config = [];
@@ -25,10 +24,6 @@ class DistanceDate
         $this->config = Config::get('terbilang.distance', []);
     }
 
-    /**
-     * @param array $config
-     * @return DistanceDate
-     */
     public function config(array $config): self
     {
         $this->config = array_merge($this->config, $config);
@@ -37,9 +32,8 @@ class DistanceDate
     }
 
     /**
-     * @param Carbon $start
-     * @param null|Carbon $end
-     * @return Stringable
+     * @param  null|Carbon  $end
+     *
      * @throws BindingResolutionException
      * @throws NotFoundExceptionInterface
      * @throws ContainerExceptionInterface
@@ -65,8 +59,6 @@ class DistanceDate
     }
 
     /**
-     * @param DateInterval $interval
-     * @return Stringable
      * @throws BindingResolutionException
      * @throws NotFoundExceptionInterface
      * @throws ContainerExceptionInterface
@@ -137,9 +129,6 @@ class DistanceDate
     }
 
     /**
-     * @param DateInterval $interval
-     * @param Enum $type
-     * @return Stringable
      * @throws InvalidNumber
      */
     private function type(DateInterval $interval, Enum $type): Stringable

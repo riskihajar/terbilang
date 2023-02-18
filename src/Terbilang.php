@@ -2,18 +2,15 @@
 
 namespace Riskihajar\Terbilang;
 
-use Illuminate\Support\Stringable;
 use Carbon\Carbon;
 use Illuminate\Contracts\Container\BindingResolutionException;
-use Psr\Container\NotFoundExceptionInterface;
+use Illuminate\Support\Stringable;
 use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
-/** @package Riskihajar\Terbilang */
 class Terbilang
 {
     /**
-     * @param mixed $number
-     * @return Stringable
      * @throws Exceptions\InvalidNumber
      */
     public function make(mixed $number): Stringable
@@ -22,9 +19,6 @@ class Terbilang
     }
 
     /**
-     * @param Carbon $start
-     * @param Carbon $end
-     * @return Stringable
      * @throws BindingResolutionException
      * @throws NotFoundExceptionInterface
      * @throws ContainerExceptionInterface
@@ -36,9 +30,6 @@ class Terbilang
     }
 
     /**
-     * @param Carbon|string $date
-     * @param string $format
-     * @return Stringable
      * @throws Exceptions\InvalidNumber
      * @throws BindingResolutionException
      * @throws NotFoundExceptionInterface
@@ -50,9 +41,6 @@ class Terbilang
     }
 
     /**
-     * @param Carbon|string $time
-     * @param string $format
-     * @return Stringable
      * @throws Exceptions\InvalidNumber
      * @throws BindingResolutionException
      * @throws NotFoundExceptionInterface
@@ -64,9 +52,6 @@ class Terbilang
     }
 
     /**
-     * @param Carbon|string $datetime
-     * @param string $format
-     * @return Stringable
      * @throws Exceptions\InvalidNumber
      * @throws BindingResolutionException
      * @throws NotFoundExceptionInterface
@@ -77,20 +62,11 @@ class Terbilang
         return (new DateTime)->datetime(datetime: $datetime, format: $format);
     }
 
-    /**
-     * @param mixed $number
-     * @param Enums\LargeNumber $target
-     * @return Stringable
-     */
     public function largeNumber(mixed $number, Enums\LargeNumber $target = Enums\LargeNumber::Million): Stringable
     {
         return (new LargeNumber)(number: $number, target: $target);
     }
 
-    /**
-     * @param mixed $number
-     * @return Stringable
-     */
     public function roman(mixed $number): Stringable
     {
         return (new Roman)(number: $number);

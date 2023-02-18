@@ -7,17 +7,13 @@ use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
-use Riskihajar\Terbilang\Exceptions\InvalidNumber;
-use Psr\Container\NotFoundExceptionInterface;
 use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
+use Riskihajar\Terbilang\Exceptions\InvalidNumber;
 
-/** @package Riskihajar\Terbilang */
 class DateTime
 {
     /**
-     * @param Carbon|string $date
-     * @param string $format
-     * @return Stringable
      * @throws InvalidNumber
      * @throws BindingResolutionException
      * @throws NotFoundExceptionInterface
@@ -54,9 +50,6 @@ class DateTime
     }
 
     /**
-     * @param Carbon|string $time
-     * @param string $format
-     * @return Stringable
      * @throws InvalidNumber
      * @throws BindingResolutionException
      * @throws NotFoundExceptionInterface
@@ -98,9 +91,6 @@ class DateTime
     }
 
     /**
-     * @param Carbon|string $datetime
-     * @param string $format
-     * @return Stringable
      * @throws InvalidNumber
      * @throws BindingResolutionException
      * @throws NotFoundExceptionInterface
