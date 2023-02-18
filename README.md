@@ -1,8 +1,8 @@
 # Number To Words Conversion For Laravel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/riskihajar/terbilang.svg?style=flat-square)](https://packagist.org/packages/riskihajar/terbilang)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/riskihajar/terbilang/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/riskihajar/terbilang/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/riskihajar/terbilang/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/riskihajar/terbilang/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/riskihajar/terbilang/run-tests.yml?branch=2.x&label=tests&style=flat-square)](https://github.com/riskihajar/terbilang/actions?query=workflow%3Arun-tests+branch%3A2.x)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/riskihajar/terbilang/fix-php-code-style-issues.yml?branch=2.x&label=code%20style&style=flat-square)](https://github.com/riskihajar/terbilang/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3A2.x)
 [![Total Downloads](https://img.shields.io/packagist/dt/riskihajar/terbilang.svg?style=flat-square)](https://packagist.org/packages/riskihajar/terbilang)
 
 Number to words conversion support multi language.
@@ -111,8 +111,8 @@ Terbilang::make(654321, ' dollars');
 
 #### Number to Roman
 `Terbilang::roman($number, $lowercase=false)`
-```
-Terbilang::roman(1234); //MCCXXXIV
+```php
+Terbilang::roman(1234); // MCCXXXIV
 ```
 
 #### Number Large Number Conversion
@@ -123,11 +123,11 @@ Available short hand : `kilo, million, billion, trillion`
 Default value : `million`
 
 if you set locale to en
-```
+```php
 Terbilang::short(1000000); // 1M
 ```
 if you set locale to id
-```
+```php
 Terbilang::short(1000000); // 1jt
 ```
 
