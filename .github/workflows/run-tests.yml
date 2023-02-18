@@ -66,26 +66,9 @@ jobs:
         run: |
           composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "nesbot/carbon:${{ matrix.carbon }}" --no-interaction --no-update
 
-      - name: Install depecencies and run scripts
-        if: "matrix.script"
+      - name: Install dependencies
         run: |
-          composer update --${{ matrix.stability }} --prefer-dist --no-interaction
-
-      - name: Install depecencies and dont run scripts
-        if: "!matrix.script"
-        run: |
-          composer update --${{ matrix.stability }} --prefer-dist --no-interaction --no-scripts
-
-      # - name: Install depecencies and run scripts
-      #   if: ${{ (matrix.stability != 'prefer-lowest' && matrix.laravel <= 8) || matrix.laravel > 8 }}
-      #   run: |
-      #     composer update --${{ matrix.stability }} --prefer-dist --no-interaction
-
-      # - name: Install depecencies and dont run scripts
-      #   if: ${{ matrix.stability == 'prefer-lowest' && matrix.laravel <= 8 }}
-      #   run: |
-      #     composer update --${{ matrix.stability }} --prefer-dist --no-interaction --no-scripts
-
+          composer update --${{ matrix.stability }} --prefer-dist --no-interaction ${{ matrix.script && ' ' || '--no-scripts' }}
 
       - name: List Installed Dependencies
         run: composer show -D
