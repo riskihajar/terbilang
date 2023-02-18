@@ -69,7 +69,7 @@ jobs:
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Install depecencies and dont run scripts
-        if: "matrix.stability == 'prefer-lowest' && matrix.laravel == 8"
+        if: "matrix.stability == 'prefer-lowest'"
         run: |
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction --no-scripts
 
