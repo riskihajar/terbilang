@@ -7,7 +7,7 @@ use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Stringable;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
-use Riskihajar\Terbilang\Enums\LargeNumber;
+use Riskihajar\Terbilang\Enums;
 
 class Terbilang
 {
@@ -33,7 +33,7 @@ class Terbilang
     /**
      * @param  null|Carbon|string  $end
      * @param  mixed  $template
-     * @return void
+     * @return Stringable
      *
      * @deprecated
      */
@@ -41,7 +41,7 @@ class Terbilang
         Carbon|string $start,
         Carbon|string|null $end = null,
         $template = null
-    ) {
+    ): Stringable {
         if (! $start instanceof Carbon) {
             $start = Carbon::parse($start);
         }
@@ -93,7 +93,9 @@ class Terbilang
     }
 
     /**
-     * @param  LargeNumber  $target
+     * @param mixed $number
+     * @param Enums\LargeNumber $target
+     * @return Stringable
      */
     public function largeNumber(mixed $number, Enums\LargeNumber $target = Enums\LargeNumber::Million): Stringable
     {
@@ -101,8 +103,9 @@ class Terbilang
     }
 
     /**
-     * @param  LargeNumber|string  $target
-     *
+     * @param mixed $number
+     * @param Enums\LargeNumber|string $target
+     * @return Stringable
      * @deprecated
      */
     public function short(mixed $number, Enums\LargeNumber|string $target = Enums\LargeNumber::Million): Stringable
@@ -111,7 +114,7 @@ class Terbilang
             $target = Enums\LargeNumber::from($target);
         }
 
-        return (new LargeNumber)(number: $number, target: $target);
+        return $this->largeNumber(number: $number, target: $target);
     }
 
     public function roman(mixed $number): Stringable
