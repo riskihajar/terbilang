@@ -19,26 +19,15 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Short Output
+    | Distance Between Date Output Format
     |--------------------------------------------------------------------------
     |
-    | This value is short config
-    | default value is million
-    | available value 'kilo, million, billion, trillion'
+    | This value is output template for function Terbilang::distance()
+    | default template FULL, available template FULL, YEAR, MONTH, DAY, HOUR, MINUTE, SECOND
     */
-    'short' => 'million',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Period Output Format
-    |--------------------------------------------------------------------------
-    |
-    | This value is output format for function Terbilang::period()
-    | default format FULL, available format FULL, YEAR, MONTH, DAY, HOUR, MINUTE, SECOND
-    */
-    'period' => [
-        'type' => 'DAY',
-        'format' => '{YEAR} {MONTH} {DAY} {HOUR} {MINUTE} {SECOND}',
+    'distance' => [
+        'type' => \Riskihajar\Terbilang\Enums\DistanceDate::Day,
+        'template' => '{YEAR} {MONTH} {DAY} {HOUR} {MINUTE} {SECOND}',
         'hide_zero_value' => true,
         'separator' => ' ',
         'terbilang' => false,

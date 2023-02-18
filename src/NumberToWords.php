@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
-use Riskihajar\Terbilang\Exceptions\Number;
 
 class NumberToWords
 {
