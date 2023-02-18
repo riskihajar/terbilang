@@ -1,12 +1,13 @@
 <?php
+
 namespace Riskihajar\Terbilang;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
 use Carbon\Carbon;
 use DateInterval;
-use Illuminate\Support\Stringable;
 use Illuminate\Support\Str;
+use Illuminate\Support\Stringable;
 use Riskihajar\Terbilang\Enums\DistanceDate as Enum;
 
 class DistanceDate
@@ -21,6 +22,7 @@ class DistanceDate
     public function config(array $config): self
     {
         $this->config = array_merge($this->config, $config);
+
         return $this;
     }
 
@@ -28,7 +30,7 @@ class DistanceDate
         Carbon $start,
         Carbon|null $end = null): Stringable
     {
-        if(is_null($end)){
+        if (is_null($end)) {
             $end = Carbon::now();
         }
 
@@ -36,9 +38,9 @@ class DistanceDate
 
         $interval = $start->diff($end);
 
-        if($type === Enum::Full){
+        if ($type === Enum::Full) {
             return $this->full($interval);
-        }else{
+        } else {
             return $this->type($interval, $type);
         }
     }
@@ -52,32 +54,32 @@ class DistanceDate
             '{YEAR}' => [
                 'value' => $year,
                 'label' => Lang::get('terbilang::date.dictionary.year'),
-                'show' => config('terbilang.period.show.year')
+                'show' => config('terbilang.period.show.year'),
             ],
             '{MONTH}' => [
                 'value' => $month,
                 'label' => Lang::get('terbilang::date.dictionary.month'),
-                'show' => config('terbilang.period.show.month')
+                'show' => config('terbilang.period.show.month'),
             ],
             '{DAY}' => [
                 'value' => $day,
                 'label' => Lang::get('terbilang::date.dictionary.day'),
-                'show' => config('terbilang.period.show.day')
+                'show' => config('terbilang.period.show.day'),
             ],
             '{HOUR}' => [
                 'value' => $hour,
                 'label' => Lang::get('terbilang::date.dictionary.hour'),
-                'show' => config('terbilang.period.show.hour')
+                'show' => config('terbilang.period.show.hour'),
             ],
             '{MINUTE}' => [
                 'value' => $minute,
                 'label' => Lang::get('terbilang::date.dictionary.minute'),
-                'show' => config('terbilang.period.show.minute')
+                'show' => config('terbilang.period.show.minute'),
             ],
             '{SECOND}' => [
                 'value' => $second,
                 'label' => Lang::get('terbilang::date.dictionary.second'),
-                'show' => config('terbilang.period.show.second')
+                'show' => config('terbilang.period.show.second'),
             ],
         ];
 
@@ -88,20 +90,20 @@ class DistanceDate
         $separator = $this->config['separator'];
         $numberToWords = new NumberToWords;
 
-        foreach(explode(' ', $template) as $key){
+        foreach (explode(' ', $template) as $key) {
             $value = $listFormat[$key]['value'];
             $label = $listFormat[$key]['label'];
             $show = $listFormat[$key]['show'];
 
-            if(($value <= 0 && $hideZeroValue) || !$show){
+            if (($value <= 0 && $hideZeroValue) || ! $show) {
                 continue;
             }
 
-            if($terbilang){
+            if ($terbilang) {
                 $value = $numberToWords->make($value);
             }
 
-            $results[] = $value . $separator . $label;
+            $results[] = $value.$separator.$label;
         }
 
         return Str::of(implode(' ', $results))->trim();
@@ -113,11 +115,11 @@ class DistanceDate
         $separator = $this->config['separator'];
         $numberToWords = new NumberToWords;
 
-        if($type === Enum::Year){
+        if ($type === Enum::Year) {
             $value = $interval->format('%y');
         }
 
-        $value = match($type){
+        $value = match ($type) {
             Enum::Year => $interval->format('%y'),
             Enum::Month => $interval->format('%m'),
             Enum::Day => $interval->format('%a'),
@@ -133,7 +135,7 @@ class DistanceDate
             $value = $numberToWords->make($value);
         }
 
-        $result = $separator . $value . $separator . $label;
+        $result = $separator.$value.$separator.$label;
 
         return Str::of($result)->trim();
     }
