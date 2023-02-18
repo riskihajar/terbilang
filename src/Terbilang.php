@@ -31,23 +31,22 @@ class Terbilang
     }
 
     /**
-     * @param Carbon|string $start
-     * @param null|Carbon|string $end
-     * @param mixed $template
+     * @param  null|Carbon|string  $end
+     * @param  mixed  $template
      * @return void
+     *
      * @deprecated
      */
     public function period(
         Carbon|string $start,
         Carbon|string|null $end = null,
         $template = null
-    )
-    {
-        if(!$start instanceof Carbon){
+    ) {
+        if (! $start instanceof Carbon) {
             $start = Carbon::parse($start);
         }
 
-        if(gettype($end) === 'string'){
+        if (gettype($end) === 'string') {
             $end = Carbon::parse($end);
         }
 
@@ -94,9 +93,7 @@ class Terbilang
     }
 
     /**
-     * @param mixed $number
-     * @param LargeNumber $target
-     * @return Stringable
+     * @param  LargeNumber  $target
      */
     public function largeNumber(mixed $number, Enums\LargeNumber $target = Enums\LargeNumber::Million): Stringable
     {
@@ -104,24 +101,19 @@ class Terbilang
     }
 
     /**
-     * @param mixed $number
-     * @param LargeNumber|string $target
-     * @return Stringable
+     * @param  LargeNumber|string  $target
+     *
      * @deprecated
      */
     public function short(mixed $number, Enums\LargeNumber|string $target = Enums\LargeNumber::Million): Stringable
     {
-        if(gettype($target) === 'string'){
+        if (gettype($target) === 'string') {
             $target = Enums\LargeNumber::from($target);
         }
 
         return (new LargeNumber)(number: $number, target: $target);
     }
 
-    /**
-     * @param mixed $number
-     * @return Stringable
-     */
     public function roman(mixed $number): Stringable
     {
         return (new Roman)(number: $number);
