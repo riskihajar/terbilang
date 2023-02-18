@@ -2,7 +2,7 @@
 namespace Riskihajar\Terbilang;
 
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\lang;
+use Illuminate\Support\Facades\Lang;
 use Carbon\Carbon;
 use DateInterval;
 use Illuminate\Support\Stringable;
@@ -121,9 +121,10 @@ class DistanceDate
             Enum::Year => $interval->format('%y'),
             Enum::Month => $interval->format('%m'),
             Enum::Day => $interval->format('%a'),
-            Enum::Hour => $interval->format('%h') + ($interval->format('%a') * 24),
-            Enum::Minute => $interval->format('%i') + ($interval->format('%a') * 24 * 60),
-            Enum::Second => $interval->format('%s') + ($interval->format('%a') * 24 * 60 * 60),
+            Enum::Hour => intval($interval->format('%h')) + (intval($interval->format('%a')) * 24),
+            Enum::Minute => intval($interval->format('%i')) + (intval($interval->format('%a')) * 24 * 60),
+            Enum::Second => intval($interval->format('%s')) + (intval($interval->format('%a')) * 24 * 60 * 60),
+            default => null,
         };
 
         $label = $type->label();

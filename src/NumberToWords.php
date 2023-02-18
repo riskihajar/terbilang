@@ -27,8 +27,6 @@ class NumberToWords
 
     private $prenum;
 
-    private $lang;
-
     public function __construct()
     {
         $this->hyphen = Lang::get('terbilang::terbilang.hyphen');
@@ -40,8 +38,6 @@ class NumberToWords
         $this->prefix = Lang::get('terbilang::terbilang.prefix');
         $this->suffix = Lang::get('terbilang::terbilang.suffix');
         $this->prenum = Lang::get('terbilang::terbilang.prenum');
-
-        $this->lang = Config::get('app.locale');
     }
 
     public function suffix(string|null $suffix): self
@@ -59,7 +55,7 @@ class NumberToWords
     }
 
     /**
-     * @throws InvalidNumber
+     * @throws Exceptions\InvalidNumber
      */
     private function parseNumber(mixed $number): mixed
     {
@@ -79,7 +75,7 @@ class NumberToWords
     /**
      * @param  mixed  $number
      *
-     * @throws InvalidNumber
+     * @throws Exceptions\InvalidNumber
      */
     public function make($number): Stringable
     {

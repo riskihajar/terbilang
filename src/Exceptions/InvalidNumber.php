@@ -4,7 +4,7 @@ namespace Riskihajar\Terbilang\Exceptions;
 
 use Exception;
 
-class InvalidNumber extends Exception
+final class InvalidNumber extends Exception
 {
     public static function isExceed(): self
     {

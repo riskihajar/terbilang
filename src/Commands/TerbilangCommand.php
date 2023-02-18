@@ -17,11 +17,11 @@ class TerbilangCommand extends Command
     {
         $number = $this->argument('number');
 
-        $result = app(\Riskihajar\Terbilang\DistanceDate::class)->config([
-            'type' => DistanceDate::Second
-        ])->make(
-            Carbon::now()->subDay()
-        )->dd();
+        // $result = app(\Riskihajar\Terbilang\DistanceDate::class)->config([
+        //     'type' => DistanceDate::Second
+        // ])->make(
+        //     Carbon::now()->subDay()
+        // )->dd();
 
         // $result = app(\Riskihajar\Terbilang\DateTime::class)->datetime('2023-02-18 17:00:00')->dd();
 
