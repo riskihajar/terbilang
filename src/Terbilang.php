@@ -7,7 +7,6 @@ use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Stringable;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
-use Riskihajar\Terbilang\Enums;
 
 class Terbilang
 {
@@ -33,7 +32,6 @@ class Terbilang
     /**
      * @param  null|Carbon|string  $end
      * @param  mixed  $template
-     * @return Stringable
      *
      * @deprecated
      */
@@ -92,20 +90,12 @@ class Terbilang
         return (new DateTime)->datetime(datetime: $datetime, format: $format);
     }
 
-    /**
-     * @param mixed $number
-     * @param Enums\LargeNumber $target
-     * @return Stringable
-     */
     public function largeNumber(mixed $number, Enums\LargeNumber $target = Enums\LargeNumber::Million): Stringable
     {
         return (new LargeNumber)(number: $number, target: $target);
     }
 
     /**
-     * @param mixed $number
-     * @param Enums\LargeNumber|string $target
-     * @return Stringable
      * @deprecated
      */
     public function short(mixed $number, Enums\LargeNumber|string $target = Enums\LargeNumber::Million): Stringable
