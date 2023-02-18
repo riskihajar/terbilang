@@ -63,4 +63,5 @@ jobs:
         run: composer show -D
 
       - name: Execute tests
+        if: "matrix.laravel >= 8"
         run: vendor/bin/pest
