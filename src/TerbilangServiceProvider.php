@@ -2,7 +2,9 @@
 
 namespace Riskihajar\Terbilang;
 
-use Riskihajar\Terbilang\Commands\TerbilangCommand;
+use Riskihajar\Terbilang\Commands\TerbilangNumberToWordsCommand;
+use Riskihajar\Terbilang\Commands\TerbilangRomanCommand;
+use Riskihajar\Terbilang\Commands\TerbilangLargeNumberCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -19,8 +21,10 @@ class TerbilangServiceProvider extends PackageServiceProvider
             ->name('terbilang')
             ->hasConfigFile()
             ->hasTranslations()
-            ->hasViews()
-            ->hasMigration('create_terbilang_table')
-            ->hasCommand(TerbilangCommand::class);
+            ->hasCommands(
+                TerbilangNumberToWordsCommand::class,
+                TerbilangRomanCommand::class,
+                TerbilangLargeNumberCommand::class,
+            );
     }
 }
