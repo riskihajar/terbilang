@@ -2,9 +2,9 @@
 
 namespace Riskihajar\Terbilang\Commands;
 
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
-use Carbon\Carbon;
 use Riskihajar\Terbilang\Enums\DistanceDate;
 
 class TerbilangCommand extends Command
@@ -18,7 +18,7 @@ class TerbilangCommand extends Command
         $number = $this->argument('number');
 
         $result = app(\Riskihajar\Terbilang\DistanceDate::class)->config([
-            'type' => DistanceDate::Second
+            'type' => DistanceDate::Second,
         ])->make(
             Carbon::now()->subDay()
         )->dd();

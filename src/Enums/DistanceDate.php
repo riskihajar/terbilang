@@ -1,4 +1,5 @@
 <?php
+
 namespace Riskihajar\Terbilang\Enums;
 
 use Illuminate\Support\Facades\Lang;
@@ -15,6 +16,6 @@ enum DistanceDate: string
 
     public function label(): string
     {
-        return Lang::get('terbilang::date.dictionary.' . strtolower($this->value)) ?? null;
+        return Lang::get('terbilang::date.dictionary.'.strtolower($this->value)) ?? null;
     }
 }
