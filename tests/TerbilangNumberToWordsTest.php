@@ -3,11 +3,8 @@
 namespace Riskihajar\Terbilang\Tests;
 
 use Illuminate\Support\Stringable;
-use Riskihajar\Terbilang\Enums\LargeNumber;
 use Riskihajar\Terbilang\Exceptions\InvalidNumber;
-use Riskihajar\Terbilang\LargeNumber as TerbilangLargeNumber;
 use Riskihajar\Terbilang\NumberToWords;
-use Riskihajar\Terbilang\Terbilang;
 
 it('has make method', function () {
     $this->assertTrue(method_exists(NumberToWords::class, 'make'));
@@ -21,7 +18,7 @@ it('throw InvalidNumber if number exceed from PHP_INT_MAX', function () {
     (new NumberToWords)->make(PHP_INT_MAX);
 })->throws(InvalidNumber::class);
 
-it('can convert number to words', function(){
+it('can convert number to words', function () {
     $this->assertEquals(
         'one million',
         (new NumberToWords)->make(1_000_000),
