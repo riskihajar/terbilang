@@ -16,10 +16,6 @@ class TestCase extends Orchestra
         parent::setUp();
 
         $this->terbilang = new Terbilang;
-
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Riskihajar\\Terbilang\\Database\\Factories\\'.class_basename($modelName).'Factory'
-        );
     }
 
     protected function getPackageProviders($app)
@@ -27,15 +23,5 @@ class TestCase extends Orchestra
         return [
             TerbilangServiceProvider::class,
         ];
-    }
-
-    public function getEnvironmentSetUp($app)
-    {
-        config()->set('database.default', 'testing');
-
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_terbilang_table.php.stub';
-        $migration->up();
-        */
     }
 }
