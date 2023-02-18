@@ -37,8 +37,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Riskihajar\\Terbilang\\": "src",
-            "Riskihajar\\Terbilang\\Database\\Factories\\": "database/factories"
+            "Riskihajar\\Terbilang\\": "src"
         }
     },
     "autoload-dev": {
