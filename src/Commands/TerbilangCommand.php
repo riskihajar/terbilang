@@ -5,6 +5,8 @@ namespace Riskihajar\Terbilang\Commands;
 use Illuminate\Console\Command;
 use Riskihajar\Terbilang\Enums\LargeNumber;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
+use Riskihajar\Terbilang\Enums\DistanceDate;
 
 class TerbilangCommand extends Command
 {
@@ -16,7 +18,13 @@ class TerbilangCommand extends Command
     {
         $number = $this->argument('number');
 
-        $result = app(\Riskihajar\Terbilang\DateTime::class)->datetime('2023-02-18 17:00:00')->dd();
+        $result = app(\Riskihajar\Terbilang\DistanceDate::class)->config([
+            'type' => DistanceDate::Second
+        ])->make(
+            Carbon::now()->subDay()
+        )->dd();
+
+        // $result = app(\Riskihajar\Terbilang\DateTime::class)->datetime('2023-02-18 17:00:00')->dd();
 
         // $result = \Riskihajar\Terbilang\Facades\Terbilang::largeNumber(
         //     number: $number,
