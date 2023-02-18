@@ -2,9 +2,9 @@
 
 namespace Riskihajar\Terbilang;
 
+use Riskihajar\Terbilang\Commands\TerbilangLargeNumberCommand;
 use Riskihajar\Terbilang\Commands\TerbilangNumberToWordsCommand;
 use Riskihajar\Terbilang\Commands\TerbilangRomanCommand;
-use Riskihajar\Terbilang\Commands\TerbilangLargeNumberCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 

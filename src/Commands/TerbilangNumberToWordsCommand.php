@@ -5,7 +5,6 @@ namespace Riskihajar\Terbilang\Commands;
 use Illuminate\Console\Command;
 use Riskihajar\Terbilang\Facades\Terbilang;
 
-
 class TerbilangNumberToWordsCommand extends Command
 {
     public $signature = 'terbilang:word {number}';
