@@ -1,6 +1,7 @@
 <?php
 
 namespace Riskihajar\Terbilang\Tests;
+
 use Riskihajar\Terbilang\Terbilang;
 
 it('has make method', function () {
