@@ -7,15 +7,25 @@ use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Stringable;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
+use Illuminate\Support\Facades\Lang;
 
 class Terbilang
 {
     /**
      * @throws Exceptions\InvalidNumber
      */
-    public function make(mixed $number): Stringable
+    public function make(mixed $number, string|null $suffix = null, string|null $prefix = null): Stringable
     {
-        return (new NumberToWords)->make(number: $number);
+
+        $prefix = $prefix ?: Lang::get('terbilang::terbilang.prefix');
+        $suffix = $suffix ?: Lang::get('terbilang::terbilang.suffix');
+
+        return (new NumberToWords)
+            ->make(number: $number)
+            ->prepend($prefix, $prefix ? ' ' : '')
+            ->append($suffix, $suffix ? ' ' : '')
+            ->trim()
+        ;
     }
 
     /**

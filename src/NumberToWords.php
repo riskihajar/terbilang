@@ -20,10 +20,6 @@ class NumberToWords
 
     private $dictionary;
 
-    private $prefix;
-
-    private $suffix;
-
     private $prenum;
 
     /** @return void  */
@@ -35,23 +31,7 @@ class NumberToWords
         $this->negative = Lang::get('terbilang::terbilang.negative');
         $this->decimal = Lang::get('terbilang::terbilang.decimal');
         $this->dictionary = Lang::get('terbilang::terbilang.dictionary');
-        $this->prefix = Lang::get('terbilang::terbilang.prefix');
-        $this->suffix = Lang::get('terbilang::terbilang.suffix');
         $this->prenum = Lang::get('terbilang::terbilang.prenum');
-    }
-
-    public function suffix(string|null $suffix): self
-    {
-        $this->suffix = $suffix;
-
-        return $this;
-    }
-
-    public function prefix(string|null $prefix): self
-    {
-        $this->prefix = $prefix;
-
-        return $this;
     }
 
     /**
@@ -145,8 +125,6 @@ class NumberToWords
             $string .= implode(' ', $words);
         }
 
-        return Str::of($string)
-            ->prepend($this->prefix, $this->prefix ? ' ' : '')
-            ->append($this->suffix, $this->suffix ? ' ' : '');
+        return Str::of($string);
     }
 }

@@ -14,7 +14,7 @@ class TerbilangNumberToWordsCommand extends Command
     public function handle(): int
     {
         $number = $this->argument('number');
-        $result = Terbilang::make($number);
+        $result = Terbilang::make($number, ' rupiah', ' senilai');
 
         $this->output->writeln("$number : <info>$result</info>");
 
