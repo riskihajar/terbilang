@@ -4,10 +4,10 @@ namespace Riskihajar\Terbilang;
 
 use Carbon\Carbon;
 use Illuminate\Contracts\Container\BindingResolutionException;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Stringable;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
-use Illuminate\Support\Facades\Lang;
 
 class Terbilang
 {
@@ -16,7 +16,6 @@ class Terbilang
      */
     public function make(mixed $number, string|null $suffix = null, string|null $prefix = null): Stringable
     {
-
         $prefix = $prefix ?: Lang::get('terbilang::terbilang.prefix');
         $suffix = $suffix ?: Lang::get('terbilang::terbilang.suffix');
 
@@ -24,8 +23,7 @@ class Terbilang
             ->make(number: $number)
             ->prepend($prefix, $prefix ? ' ' : '')
             ->append($suffix, $suffix ? ' ' : '')
-            ->trim()
-        ;
+            ->trim();
     }
 
     /**
