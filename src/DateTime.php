@@ -41,7 +41,7 @@ class DateTime
 
     public function time(Carbon|string $time, string $format = 'h:i:s'): Stringable
     {
-        if (!$time instanceof Carbon) {
+        if (! $time instanceof Carbon) {
             $time = Carbon::createFromFormat($format, $time);
         }
 
@@ -49,7 +49,7 @@ class DateTime
         $i = $time->format('i');
         $s = intval($time->format('s')) ?: null;
 
-        $separator  = Lang::get('terbilang::date.time.minute-separator');
+        $separator = Lang::get('terbilang::date.time.minute-separator');
         $strMinute = Lang::get('terbilang::date.time.minute');
         $strSecond = $s ? Lang::get('terbilang::date.time.second') : null;
 
@@ -63,10 +63,10 @@ class DateTime
 
         $string = str_replace(
             [
-                '{HOUR}', '{SEPARATOR}', '{MINUTE}', '{MINUTE_LABEL}', '{SECOND}', '{SECOND_LABEL}'
+                '{HOUR}', '{SEPARATOR}', '{MINUTE}', '{MINUTE_LABEL}', '{SECOND}', '{SECOND_LABEL}',
             ],
             [
-                $hour->toString(), $separator, $minute->toString(), $strMinute, $second?->toString(), $strSecond
+                $hour->toString(), $separator, $minute->toString(), $strMinute, $second?->toString(), $strSecond,
             ],
             $template
         );
@@ -83,14 +83,16 @@ class DateTime
         $date = $datetime->format('Y-m-d');
         $time = $datetime->format('h:i:s');
 
-        $meridiem = value(function() use($datetime){
-            $result = Lang::get('terbilang::date.time.' . $datetime->format('a'));
+        $meridiem = value(function () use ($datetime) {
+            $result = Lang::get('terbilang::date.time.'.$datetime->format('a'));
 
-            if(is_array($result)){
+            if (is_array($result)) {
                 $hour = $datetime->format('H');
 
-                foreach($result as $h => $result){
-                    if($h <= $hour) break;
+                foreach ($result as $h => $result) {
+                    if ($h <= $hour) {
+                        break;
+                    }
                 }
             }
 
