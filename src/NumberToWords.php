@@ -2,7 +2,6 @@
 
 namespace Riskihajar\Terbilang;
 
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
