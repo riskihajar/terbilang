@@ -56,8 +56,8 @@ jobs:
 
       - name: Remove Laravel Pint
         if: "matrix.php < 8"
-        run: /
-          composer remove "laravel/pint" --no-interaction --no-update
+        run: |
+          composer remove "laravel/pint" --dev --no-interaction --no-update
 
       - name: Install dependencies
         run: |
