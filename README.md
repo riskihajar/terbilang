@@ -37,7 +37,7 @@ Number to words conversion support multi language.
 You can install the package via composer:
 
 ```bash
-composer require riskihajar/terbilang
+composer require riskihajar/terbilang:^2.0
 ```
 
 ## Usage
