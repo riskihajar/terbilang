@@ -4,7 +4,10 @@
     "keywords": [
         "riskihajar",
         "laravel",
-        "terbilang"
+        "terbilang",
+        "number to words",
+        "date to words",
+        "number to roman"
     ],
     "homepage": "https://github.com/riskihajar/terbilang",
     "license": "MIT",
