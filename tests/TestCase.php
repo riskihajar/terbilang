@@ -4,13 +4,18 @@ namespace Riskihajar\Terbilang\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
+use Riskihajar\Terbilang\Terbilang;
 use Riskihajar\Terbilang\TerbilangServiceProvider;
 
 class TestCase extends Orchestra
 {
+    protected $terbilang;
+
     protected function setUp(): void
     {
         parent::setUp();
+
+        $this->terbilang = new Terbilang;
 
         Factory::guessFactoryNamesUsing(
             fn (string $modelName) => 'Riskihajar\\Terbilang\\Database\\Factories\\'.class_basename($modelName).'Factory'
