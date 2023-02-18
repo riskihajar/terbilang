@@ -2,7 +2,6 @@
 
 namespace Riskihajar\Terbilang\Tests;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Riskihajar\Terbilang\Terbilang;
 use Riskihajar\Terbilang\TerbilangServiceProvider;
