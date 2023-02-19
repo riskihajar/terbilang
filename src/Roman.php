@@ -15,7 +15,7 @@ class Roman
 
         foreach (Enum::cases() as $roman) {
             $matches = intval($number / $roman->value);
-            $results[] = str_repeat($roman->label(), $matches);
+            $results[] = str_repeat($roman->name, $matches);
             $number = $number % $roman->value;
         }
 

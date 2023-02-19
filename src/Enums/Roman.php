@@ -17,23 +17,4 @@ enum Roman: int
     case V = 5;
     case IV = 4;
     case I = 1;
-
-    public function label(): string
-    {
-        return match ($this) {
-            self::M => 'M',
-            self::CM => 'CM',
-            self::D => 'D',
-            self::CD => 'CD',
-            self::C => 'C',
-            self::XC => 'XC',
-            self::L => 'L',
-            self::XL => 'XL',
-            self::X => 'X',
-            self::IX => 'IX',
-            self::V => 'V',
-            self::IV => 'IV',
-            self::I => 'I',
-        };
-    }
 }
