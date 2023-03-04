@@ -9,7 +9,7 @@ enum LargeNumber: string
     case Kilo = 'kilo';
     case Million = 'million';
     case Billion = 'billion';
-    case Trilion = 'trilion';
+    case Trillion = 'trillion';
     case Quadrillion = 'quadrillion';
 
     public function divider(): int
