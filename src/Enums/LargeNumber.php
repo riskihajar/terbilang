@@ -18,7 +18,7 @@ enum LargeNumber: string
             self::Kilo => 10 ** 3,
             self::Million => 10 ** 6,
             self::Billion => 10 ** 9,
-            self::Trilion => 10 ** 12,
+            self::Trillion => 10 ** 12,
             self::Quadrillion => 10 ** 15,
         };
     }
