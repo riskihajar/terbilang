@@ -25,6 +25,11 @@ jobs:
             testbench: 7.*
             carbon: 2.*
             script: true
+          - laravel: 9.*
+            testbench: 7.*
+            carbon: 2.*
+            php: 8.0
+            script: false
           - laravel: 8.*
             testbench: 6.*
             carbon: 2.*
