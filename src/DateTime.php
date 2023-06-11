@@ -14,16 +14,34 @@ use Riskihajar\Terbilang\Exceptions\InvalidNumber;
 class DateTime
 {
     /**
+     * Parses a given date into a Carbon object, using the given format.
+     *
+     * @param  Carbon|string|\DateTime  $date The date to parse.
+     * @param  string  $format The format to use when parsing the date.
+     * @return Carbon The parsed date as a Carbon object.
+     */
+    protected function parseDate(Carbon|string|\DateTime $date, string $format = 'Y-m-d'): Carbon
+    {
+        if (! $date instanceof Carbon) {
+            if ($date instanceof \DateTime) {
+                $date = Carbon::parse($date);
+            } else {
+                $date = Carbon::createFromFormat($format, $date);
+            }
+        }
+
+        return $date;
+    }
+
+    /**
      * @throws InvalidNumber
      * @throws BindingResolutionException
      * @throws NotFoundExceptionInterface
      * @throws ContainerExceptionInterface
      */
-    public function date(Carbon|string $date, string $format = 'Y-m-d'): Stringable
+    public function date(Carbon|string|\DateTime $date, string $format = 'Y-m-d'): Stringable
     {
-        if (! $date instanceof Carbon) {
-            $date = Carbon::createFromFormat($format, $date);
-        }
+        $date = $this->parseDate($date, $format);
 
         $j = $date->format('j');
         $n = $date->format('n');
@@ -55,11 +73,9 @@ class DateTime
      * @throws NotFoundExceptionInterface
      * @throws ContainerExceptionInterface
      */
-    public function time(Carbon|string $time, string $format = 'H:i:s'): Stringable
+    public function time(Carbon|string|\DateTime $time, string $format = 'H:i:s'): Stringable
     {
-        if (! $time instanceof Carbon) {
-            $time = Carbon::createFromFormat($format, $time);
-        }
+        $time = $this->parseDate($time, $format);
 
         $G = $time->format('G');
         $i = $time->format('i');
@@ -82,7 +98,7 @@ class DateTime
                 '{HOUR}', '{SEPARATOR}', '{MINUTE}', '{MINUTE_LABEL}', '{SECOND}', '{SECOND_LABEL}',
             ],
             [
-                $hour->toString(), $separator, $minute->toString(), $strMinute, $second?->toString(), $strSecond,
+                $hour, $separator, $minute, $strMinute, $second, $strSecond,
             ],
             $template
         );
@@ -96,11 +112,9 @@ class DateTime
      * @throws NotFoundExceptionInterface
      * @throws ContainerExceptionInterface
      */
-    public function datetime(Carbon|string $datetime, string $format = 'Y-m-d H:i:s'): Stringable
+    public function datetime(Carbon|string|\DateTime $datetime, string $format = 'Y-m-d H:i:s'): Stringable
     {
-        if (! $datetime instanceof Carbon) {
-            $datetime = Carbon::createFromFormat($format, $datetime);
-        }
+        $datetime = $this->parseDate($datetime, $format);
 
         $date = $datetime->format('Y-m-d');
         $time = $datetime->format('h:i:s');
