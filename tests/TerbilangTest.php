@@ -12,7 +12,7 @@ it('has distance method', function () {
     expect(method_exists(Terbilang::class, 'distance'))->toBeTrue();
 });
 
-it('has period method to support old project', function () {
+it('has period method to support old version', function () {
     expect(method_exists(Terbilang::class, 'period'))->toBeTrue();
 });
 
@@ -32,7 +32,7 @@ it('has largeNumber method', function () {
     expect(method_exists(Terbilang::class, 'largeNumber'))->toBeTrue();
 });
 
-it('has short method to support old project', function () {
+it('has short method to support old version', function () {
     expect(method_exists(Terbilang::class, 'short'))->toBeTrue();
 });
 
