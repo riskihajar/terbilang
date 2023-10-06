@@ -14,6 +14,7 @@ class Terbilang{
     protected $prefix;
     protected $suffix;
     protected $prenum;
+    protected $short;
 
     protected $lang;
 
@@ -57,7 +58,7 @@ class Terbilang{
         }
 
         // parse quoted value and make sure its number
-        $number = doubleval($number);
+        $number = $numberFraction = doubleval($number);
 
         // handle scientific value like 1.0E+15 after parse quoted
         $number = sprintf('%0d', $number);
@@ -77,9 +78,8 @@ class Terbilang{
 
         $string = $fraction = null;
 
-        // dd($number);
-        if (strpos($number, '.') !== false) {
-            list($number, $fraction) = explode('.', $number);
+        if (strpos($numberFraction, '.') !== false) {
+            list($numberFraction, $fraction) = explode('.', $numberFraction);
         }
 
 
