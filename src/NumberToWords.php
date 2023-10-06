@@ -116,7 +116,7 @@ class NumberToWords
                 break;
         }
 
-        if (null !== $fraction && is_numeric($fraction)) {
+        if ($fraction !== null && is_numeric($fraction)) {
             $string .= $this->decimal;
             $words = [];
             foreach (str_split((string) $fraction) as $number) {

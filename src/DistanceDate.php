@@ -32,8 +32,6 @@ class DistanceDate
     }
 
     /**
-     * @param  null|Carbon  $end
-     *
      * @throws BindingResolutionException
      * @throws NotFoundExceptionInterface
      * @throws ContainerExceptionInterface
@@ -41,7 +39,7 @@ class DistanceDate
      */
     public function make(
         Carbon $start,
-        Carbon|null $end = null): Stringable
+        Carbon $end = null): Stringable
     {
         if (is_null($end)) {
             $end = Carbon::now();
