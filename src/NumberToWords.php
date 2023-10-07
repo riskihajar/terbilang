@@ -5,7 +5,6 @@ namespace Riskihajar\Terbilang;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
-use NumberFormatter;
 
 class NumberToWords
 {
@@ -48,7 +47,7 @@ class NumberToWords
 
         $isScientific = preg_match('/^[+-]?[0-9]+(\.[0-9]+)?[eE][+-]?[0-9]+$/', $number);
 
-        if($isScientific){ // handle scientific value like 1.0E+15 after parse quoted
+        if ($isScientific) { // handle scientific value like 1.0E+15 after parse quoted
             $number = sprintf('%0d', $number);
         }
 
@@ -81,7 +80,7 @@ class NumberToWords
 
         $number = $this->parseNumber(number: $number);
 
-        if(extension_loaded('intl') && config('terbilang.use_intl', true)) {
+        if (extension_loaded('intl') && config('terbilang.use_intl', true)) {
             return $this->spellout($number);
         }
 
