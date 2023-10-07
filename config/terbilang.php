@@ -24,6 +24,13 @@ return [
      */
     'locale' => 'en',
 
+    /**
+     * use intl module if enabled
+     * just disabled if you want use native intl module php
+     * look : https://www.php.net/manual/en/class.numberformatter.php#numberformatter.constants.spellout
+     */
+    'use_intl' => true,
+
     /*
     |--------------------------------------------------------------------------
     | Distance Between Date Output Format

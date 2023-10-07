@@ -5,6 +5,7 @@ namespace Riskihajar\Terbilang;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
+use NumberFormatter;
 
 class NumberToWords
 {
@@ -22,16 +23,19 @@ class NumberToWords
 
     private $prenum;
 
+    private $locale;
+
     /** @return void  */
     public function __construct()
     {
-        $this->hyphen = Lang::get('terbilang::terbilang.hyphen', [], config('terbilang.locale') ?: config('app.locale'));
-        $this->conjunction = Lang::get('terbilang::terbilang.conjunction', [], config('terbilang.locale') ?: config('app.locale'));
-        $this->separator = Lang::get('terbilang::terbilang.separator', [], config('terbilang.locale') ?: config('app.locale'));
-        $this->negative = Lang::get('terbilang::terbilang.negative', [], config('terbilang.locale') ?: config('app.locale'));
-        $this->decimal = Lang::get('terbilang::terbilang.decimal', [], config('terbilang.locale') ?: config('app.locale'));
-        $this->dictionary = Lang::get('terbilang::terbilang.dictionary', [], config('terbilang.locale') ?: config('app.locale'));
-        $this->prenum = Lang::get('terbilang::terbilang.prenum', [], config('terbilang.locale') ?: config('app.locale'));
+        $this->locale = config('terbilang.locale') ?: config('app.locale');
+        $this->hyphen = Lang::get('terbilang::terbilang.hyphen', [], $this->locale);
+        $this->conjunction = Lang::get('terbilang::terbilang.conjunction', [], $this->locale);
+        $this->separator = Lang::get('terbilang::terbilang.separator', [], $this->locale);
+        $this->negative = Lang::get('terbilang::terbilang.negative', [], $this->locale);
+        $this->decimal = Lang::get('terbilang::terbilang.decimal', [], $this->locale);
+        $this->dictionary = Lang::get('terbilang::terbilang.dictionary', [], $this->locale);
+        $this->prenum = Lang::get('terbilang::terbilang.prenum', [], $this->locale);
     }
 
     /**
@@ -42,14 +46,28 @@ class NumberToWords
         // parse quoted value and make sure its number
         $number = floatval($number);
 
-        // handle scientific value like 1.0E+15 after parse quoted
-        $number = sprintf('%0d', $number);
+        $isScientific = preg_match('/^[+-]?[0-9]+(\.[0-9]+)?[eE][+-]?[0-9]+$/', $number);
 
-        if (($number >= 0 && intval($number) < 0) || (intval($number) < 0 - PHP_INT_MAX)) {
+        if($isScientific){ // handle scientific value like 1.0E+15 after parse quoted
+            $number = sprintf('%0d', $number);
+        }
+
+        if (
+            ($number >= 0 && intval($number) < 0)
+            || (intval($number) < 0 - PHP_INT_MAX)
+            || $number >= 10_000_000_000_000_000
+        ) {
             throw Exceptions\InvalidNumber::isExceed();
         }
 
         return $number;
+    }
+
+    private function spellout($number): Stringable
+    {
+        $formatter = new \NumberFormatter($this->locale, \NumberFormatter::SPELLOUT);
+
+        return Str::of($formatter->format($number));
     }
 
     /**
@@ -62,6 +80,10 @@ class NumberToWords
         }
 
         $number = $this->parseNumber(number: $number);
+
+        if(extension_loaded('intl') && config('terbilang.use_intl', true)) {
+            return $this->spellout($number);
+        }
 
         if ($number < 0) {
             return $this->make(number: abs($number))->prepend($this->negative, ' ');
