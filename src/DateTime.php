@@ -119,8 +119,10 @@ class DateTime
         $date = $datetime->format('Y-m-d');
         $time = $datetime->format('h:i:s');
 
-        $meridiem = value(function () use ($datetime) {
-            $result = Lang::get('terbilang::date.time.'.$datetime->format('a'), [], config('terbilang.locale') ?: config('app.locale'));
+        $locale = config('terbilang.locale') ?: config('app.locale');
+
+        $meridiem = value(function () use ($datetime, $locale) {
+            $result = Lang::get('terbilang::date.time.'.$datetime->format('a'), [], $locale);
 
             if (is_array($result)) {
                 $hour = $datetime->format('H');
@@ -135,7 +137,7 @@ class DateTime
             return $result;
         });
 
-        $separator = Lang::get('terbilang::date.time.dt-separator', [], config('terbilang.locale') ?: config('app.locale'));
+        $separator = Lang::get('terbilang::date.time.dt-separator', [], $locale);
 
         $string = implode(' ', array_filter([
             $this->date($date)->toString(),
