@@ -17,16 +17,19 @@ it('has datetime method', function () {
 });
 
 it('can convert date to word', function () {
+    config()->set('terbilang.use_intl', false);
     $date = \DateTime::createFromFormat('Y-m-d', '2023-02-01');
     $this->assertEquals('one february two thousand and twenty-three', (new DateTime)->date($date));
 });
 
 it('can convert time to word', function () {
+    config()->set('terbilang.use_intl', false);
     $time = \DateTime::createFromFormat('H:i:s', '09:30:45');
     $this->assertEquals('nine past thirty minutes fourty-five seconds', (new DateTime)->time($time));
 });
 
 it('can convert datetime to word', function () {
+    config()->set('terbilang.use_intl', false);
     $datetime = \DateTime::createFromFormat('Y-m-d H:i:s', '2023-03-01 11:12:13');
     $this->assertEquals('one march two thousand and twenty-three at eleven past twelve minutes thirteen seconds am', (new DateTime)->datetime($datetime));
 });
