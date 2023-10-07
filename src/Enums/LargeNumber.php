@@ -23,7 +23,7 @@ enum LargeNumber: string
         };
     }
 
-    public function abbreviation(): string|null
+    public function abbreviation(): ?string
     {
         $dictionary = Lang::get('terbilang::terbilang.large-number', [], config('terbilang.locale') ?: config('app.locale'));
 
