@@ -2,7 +2,7 @@
 
 namespace Riskihajar\Terbilang\Tests;
 
-use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Stringable;
 use Riskihajar\Terbilang\Exceptions\InvalidNumber;
 use Riskihajar\Terbilang\NumberToWords;
@@ -31,7 +31,7 @@ it('can convert number to words', function () {
 });
 
 it('can use language', function () {
-    Lang::setLocale('id');
+    Config::set('terbilang.locale', 'id');
 
     $this->assertEquals(
         'satu juta',

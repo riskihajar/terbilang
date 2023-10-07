@@ -16,6 +16,6 @@ enum DistanceDate: string
 
     public function label(): string
     {
-        return Lang::get('terbilang::date.dictionary.'.strtolower($this->value));
+        return Lang::get('terbilang::date.dictionary.'.strtolower($this->value), [], config('terbilang.locale') ?: config('app.locale'));
     }
 }

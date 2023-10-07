@@ -50,7 +50,7 @@ class DateTime
         $numberToWords = new NumberToWords;
 
         $day = $numberToWords->make($j);
-        $month = strtolower(Lang::get('terbilang::date.month.'.$n));
+        $month = strtolower(Lang::get('terbilang::date.month.'.$n, [], config('terbilang.locale') ?: config('app.locale')));
         $year = $numberToWords->make($Y);
 
         $template = config('terbilang.output.date', '{DAY} {MONTH} {YEAR}');
@@ -81,9 +81,9 @@ class DateTime
         $i = $time->format('i');
         $s = intval($time->format('s')) ?: null;
 
-        $separator = Lang::get('terbilang::date.time.minute-separator');
-        $strMinute = Lang::get('terbilang::date.time.minute');
-        $strSecond = $s ? Lang::get('terbilang::date.time.second') : null;
+        $separator = Lang::get('terbilang::date.time.minute-separator', [], config('terbilang.locale') ?: config('app.locale'));
+        $strMinute = Lang::get('terbilang::date.time.minute', [], config('terbilang.locale') ?: config('app.locale'));
+        $strSecond = $s ? Lang::get('terbilang::date.time.second', [], config('terbilang.locale') ?: config('app.locale')) : null;
 
         $numberToWords = new NumberToWords;
 
@@ -120,7 +120,7 @@ class DateTime
         $time = $datetime->format('h:i:s');
 
         $meridiem = value(function () use ($datetime) {
-            $result = Lang::get('terbilang::date.time.'.$datetime->format('a'));
+            $result = Lang::get('terbilang::date.time.'.$datetime->format('a'), [], config('terbilang.locale') ?: config('app.locale'));
 
             if (is_array($result)) {
                 $hour = $datetime->format('H');
@@ -135,7 +135,7 @@ class DateTime
             return $result;
         });
 
-        $separator = Lang::get('terbilang::date.time.dt-separator');
+        $separator = Lang::get('terbilang::date.time.dt-separator', [], config('terbilang.locale') ?: config('app.locale'));
 
         $string = implode(' ', array_filter([
             $this->date($date)->toString(),

@@ -25,13 +25,13 @@ class NumberToWords
     /** @return void  */
     public function __construct()
     {
-        $this->hyphen = Lang::get('terbilang::terbilang.hyphen');
-        $this->conjunction = Lang::get('terbilang::terbilang.conjunction');
-        $this->separator = Lang::get('terbilang::terbilang.separator');
-        $this->negative = Lang::get('terbilang::terbilang.negative');
-        $this->decimal = Lang::get('terbilang::terbilang.decimal');
-        $this->dictionary = Lang::get('terbilang::terbilang.dictionary');
-        $this->prenum = Lang::get('terbilang::terbilang.prenum');
+        $this->hyphen = Lang::get('terbilang::terbilang.hyphen', [], config('terbilang.locale') ?: config('app.locale'));
+        $this->conjunction = Lang::get('terbilang::terbilang.conjunction', [], config('terbilang.locale') ?: config('app.locale'));
+        $this->separator = Lang::get('terbilang::terbilang.separator', [], config('terbilang.locale') ?: config('app.locale'));
+        $this->negative = Lang::get('terbilang::terbilang.negative', [], config('terbilang.locale') ?: config('app.locale'));
+        $this->decimal = Lang::get('terbilang::terbilang.decimal', [], config('terbilang.locale') ?: config('app.locale'));
+        $this->dictionary = Lang::get('terbilang::terbilang.dictionary', [], config('terbilang.locale') ?: config('app.locale'));
+        $this->prenum = Lang::get('terbilang::terbilang.prenum', [], config('terbilang.locale') ?: config('app.locale'));
     }
 
     /**

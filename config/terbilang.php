@@ -17,6 +17,13 @@ return [
         'time' => '{HOUR} {SEPARATOR} {MINUTE} {MINUTE_LABEL} {SECOND} {SECOND_LABEL}',
     ],
 
+    /**
+     * Locale
+     * if you want to change locale for output this package only
+     * but want keep app using default locale
+     */
+    'locale' => 'en',
+
     /*
     |--------------------------------------------------------------------------
     | Distance Between Date Output Format

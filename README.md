@@ -66,6 +66,8 @@ return [
         'time' => '{HOUR} {SEPARATOR} {MINUTE} {MINUTE_LABEL} {SECOND} {SECOND_LABEL}',
     ],
 
+    'locale' => 'en',
+
     'distance' => [
         'type' => \Riskihajar\Terbilang\Enums\DistanceDate::Day,
         'template' => '{YEAR} {MONTH} {DAY} {HOUR} {MINUTE} {SECOND}',
@@ -90,10 +92,14 @@ return [
 
 if you set locale to en
 ```php
+Config::set('terbilang.locale', 'end');
+
 Terbilang::make(1000000); // one million
 ```
 if you set locale to id
 ```php
+Config::set('terbilang.locale', 'id');
+
 Terbilang::make(1000000); // satu juta
 ```
 

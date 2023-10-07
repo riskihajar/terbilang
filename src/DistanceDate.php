@@ -72,32 +72,32 @@ class DistanceDate
         $listFormat = [
             '{YEAR}' => [
                 'value' => $year,
-                'label' => Lang::get('terbilang::date.dictionary.year'),
+                'label' => Lang::get('terbilang::date.dictionary.year', [], config('terbilang.locale') ?: config('app.locale')),
                 'show' => config('terbilang.period.show.year'),
             ],
             '{MONTH}' => [
                 'value' => $month,
-                'label' => Lang::get('terbilang::date.dictionary.month'),
+                'label' => Lang::get('terbilang::date.dictionary.month', [], config('terbilang.locale') ?: config('app.locale')),
                 'show' => config('terbilang.period.show.month'),
             ],
             '{DAY}' => [
                 'value' => $day,
-                'label' => Lang::get('terbilang::date.dictionary.day'),
+                'label' => Lang::get('terbilang::date.dictionary.day', [], config('terbilang.locale') ?: config('app.locale')),
                 'show' => config('terbilang.period.show.day'),
             ],
             '{HOUR}' => [
                 'value' => $hour,
-                'label' => Lang::get('terbilang::date.dictionary.hour'),
+                'label' => Lang::get('terbilang::date.dictionary.hour', [], config('terbilang.locale') ?: config('app.locale')),
                 'show' => config('terbilang.period.show.hour'),
             ],
             '{MINUTE}' => [
                 'value' => $minute,
-                'label' => Lang::get('terbilang::date.dictionary.minute'),
+                'label' => Lang::get('terbilang::date.dictionary.minute', [], config('terbilang.locale') ?: config('app.locale')),
                 'show' => config('terbilang.period.show.minute'),
             ],
             '{SECOND}' => [
                 'value' => $second,
-                'label' => Lang::get('terbilang::date.dictionary.second'),
+                'label' => Lang::get('terbilang::date.dictionary.second', [], config('terbilang.locale') ?: config('app.locale')),
                 'show' => config('terbilang.period.show.second'),
             ],
         ];

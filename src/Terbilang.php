@@ -16,8 +16,8 @@ class Terbilang
      */
     public function make(mixed $number, string|null $suffix = null, string|null $prefix = null): Stringable
     {
-        $prefix = $prefix ?: Lang::get('terbilang::terbilang.prefix');
-        $suffix = $suffix ?: Lang::get('terbilang::terbilang.suffix');
+        $prefix = $prefix ?: Lang::get('terbilang::terbilang.prefix', [], config('terbilang.locale') ?: config('app.locale'));
+        $suffix = $suffix ?: Lang::get('terbilang::terbilang.suffix', [], config('terbilang.locale') ?: config('app.locale'));
 
         return (new NumberToWords)
             ->make(number: $number)
