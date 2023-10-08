@@ -92,7 +92,7 @@ return [
 
 if you set locale to en
 ```php
-Config::set('terbilang.locale', 'end');
+Config::set('terbilang.locale', 'en');
 
 Terbilang::make(1000000); // one million
 ```
