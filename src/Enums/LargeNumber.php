@@ -25,7 +25,7 @@ enum LargeNumber: string
 
     public static function tryFromZeroLength(?int $length): self
     {
-        return match(true){
+        return match (true) {
             default => self::Kilo,
             $length >= 12 => self::Trillion,
             $length >= 9 => self::Billion,
