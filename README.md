@@ -16,7 +16,7 @@ Number to words conversion support multi language.
 ### Feature
 * [Number to Words](https://github.com/riskihajar/terbilang#number-to-words)
 * [Number to Roman](https://github.com/riskihajar/terbilang#number-to-roman)
-* [Number Large Number Conversion](https://github.com/riskihajar/terbilang#number-large-conversion) (Number Short Hand in past version)
+* [Number Large Conversion](https://github.com/riskihajar/terbilang#number-large-conversion) (Number Short Hand in past version)
 * [Datetime to Words](https://github.com/riskihajar/terbilang#datetime)
 * [Distance Date](https://github.com/riskihajar/terbilang#distance-date) (Period in past version)
 
@@ -121,7 +121,7 @@ Terbilang::make(654321, ' dollars');
 Terbilang::roman(1234); // MCCXXXIV
 ```
 
-#### Number Large Number Conversion
+#### Number Large Conversion
 `Terbilang::short($number, $format)`
 
 Available short hand : `kilo, million, billion, trillion`
