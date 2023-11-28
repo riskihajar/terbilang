@@ -15,6 +15,7 @@ enum LargeNumber: string
     public function divider(): int
     {
         return match ($this) {
+            default => 1,
             self::Kilo => 10 ** 3,
             self::Million => 10 ** 6,
             self::Billion => 10 ** 9,
@@ -25,10 +26,10 @@ enum LargeNumber: string
     public static function tryFromZeroLength(?int $length): self
     {
         return match(true){
+            default => self::Kilo,
             $length >= 12 => self::Trillion,
             $length >= 9 => self::Billion,
             $length >= 6 => self::Million,
-            $length >= 3 => self::Kilo,
         };
     }
 
