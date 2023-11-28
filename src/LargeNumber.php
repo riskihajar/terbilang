@@ -8,9 +8,14 @@ use Riskihajar\Terbilang\Enums\LargeNumber as Enum;
 
 class LargeNumber
 {
-    public function __invoke(mixed $number, Enum $target = Enum::Million, ?int $precision = 2): Stringable
+    public function __invoke(mixed $number, Enum $target = Enum::Auto, ?int $precision = 2): Stringable
     {
+        $target = $target === Enum::Auto
+            ? Enum::tryFromValue($number)
+            : $target;
+
         $result = round($number / $target->divider(), $precision);
+
         $string = implode('', [
             $result,
             $target->abbreviation(),

@@ -6,11 +6,11 @@ use Illuminate\Support\Facades\Lang;
 
 enum LargeNumber: string
 {
+    case Auto = 'auto';
     case Kilo = 'kilo';
     case Million = 'million';
     case Billion = 'billion';
     case Trillion = 'trillion';
-    case Quadrillion = 'quadrillion';
 
     public function divider(): int
     {
@@ -19,8 +19,31 @@ enum LargeNumber: string
             self::Million => 10 ** 6,
             self::Billion => 10 ** 9,
             self::Trillion => 10 ** 12,
-            self::Quadrillion => 10 ** 15,
         };
+    }
+
+    public static function tryFromZeroLength(?int $length): self
+    {
+        return match(true){
+            $length >= 12 => self::Trillion,
+            $length >= 9 => self::Billion,
+            $length >= 6 => self::Million,
+            $length >= 3 => self::Kilo,
+        };
+    }
+
+    public static function tryFromBaseUnit(?int $baseUnit): self
+    {
+        $zeros = floor(log10($baseUnit));
+
+        return self::tryFromZeroLength($zeros);
+    }
+
+    public static function tryFromValue(?float $value): self
+    {
+        $baseUnit = pow(1000, floor(log($value, 1000)));
+
+        return self::tryFromBaseUnit($baseUnit);
     }
 
     public function abbreviation(): ?string

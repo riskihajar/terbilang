@@ -98,7 +98,7 @@ class Terbilang
         return (new DateTime)->datetime(datetime: $datetime, format: $format);
     }
 
-    public function largeNumber(mixed $number, Enums\LargeNumber $target = Enums\LargeNumber::Million): Stringable
+    public function largeNumber(mixed $number, Enums\LargeNumber $target = Enums\LargeNumber::Auto): Stringable
     {
         return (new LargeNumber)(number: $number, target: $target);
     }
@@ -106,7 +106,7 @@ class Terbilang
     /**
      * @deprecated
      */
-    public function short(mixed $number, Enums\LargeNumber|string $target = Enums\LargeNumber::Million): Stringable
+    public function short(mixed $number, Enums\LargeNumber|string $target = Enums\LargeNumber::Auto): Stringable
     {
         if (gettype($target) === 'string') {
             $target = Enums\LargeNumber::from($target);
