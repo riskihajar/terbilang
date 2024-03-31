@@ -7,6 +7,9 @@
 
 Number to words conversion support multi language.
 
+> [!WARNING]  
+> Before you install this package, please check [Laravel Numbers Helper](https://laravel.com/docs/11.x/helpers#numbers-method-list), since laravel officially support numbers helper, maybe this package will deprecated soon.
+
 ### Supported Language
 * `id` | Bahasa Indonesia
 * `en` | English
