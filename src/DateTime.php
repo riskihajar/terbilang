@@ -16,8 +16,8 @@ class DateTime
     /**
      * Parses a given date into a Carbon object, using the given format.
      *
-     * @param  Carbon|string|\DateTime  $date The date to parse.
-     * @param  string  $format The format to use when parsing the date.
+     * @param  Carbon|string|\DateTime  $date  The date to parse.
+     * @param  string  $format  The format to use when parsing the date.
      * @return Carbon The parsed date as a Carbon object.
      */
     protected function parseDate(Carbon|string|\DateTime $date, string $format = 'Y-m-d'): Carbon

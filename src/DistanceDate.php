@@ -39,7 +39,7 @@ class DistanceDate
      */
     public function make(
         Carbon $start,
-        Carbon $end = null): Stringable
+        ?Carbon $end = null): Stringable
     {
         if (is_null($end)) {
             $end = Carbon::now();

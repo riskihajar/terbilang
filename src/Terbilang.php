@@ -14,7 +14,7 @@ class Terbilang
     /**
      * @throws Exceptions\InvalidNumber
      */
-    public function make(mixed $number, string $suffix = null, string $prefix = null): Stringable
+    public function make(mixed $number, ?string $suffix = null, ?string $prefix = null): Stringable
     {
         $locale = config('terbilang.locale') ?: config('app.locale');
         $prefix = $prefix ?: Lang::get('terbilang::terbilang.prefix', [], $locale);
@@ -45,7 +45,7 @@ class Terbilang
      */
     public function period(
         Carbon|string $start,
-        Carbon|string $end = null,
+        Carbon|string|null $end = null,
         $template = null
     ): Stringable {
         if (! $start instanceof Carbon) {
