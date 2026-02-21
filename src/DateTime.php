@@ -125,13 +125,17 @@ class DateTime
             $result = Lang::get('terbilang::date.time.'.$datetime->format('a'), [], $locale);
 
             if (is_array($result)) {
-                $hour = $datetime->format('H');
+                $hour = (int) $datetime->format('H');
+                $meridiem = null;
 
-                foreach ($result as $h => $result) {
-                    if ($h <= $hour) {
+                foreach ($result as $threshold => $label) {
+                    if ($threshold <= $hour) {
+                        $meridiem = $label;
                         break;
                     }
                 }
+
+                $result = $meridiem ?? end($result);
             }
 
             return $result;
