@@ -144,8 +144,8 @@ class DistanceDate
             Enum::Month => $interval->format('%m'),
             Enum::Day => $interval->format('%a'),
             Enum::Hour => intval($interval->format('%h')) + (intval($interval->format('%a')) * 24),
-            Enum::Minute => intval($interval->format('%i')) + (intval($interval->format('%a')) * 24 * 60),
-            Enum::Second => intval($interval->format('%s')) + (intval($interval->format('%a')) * 24 * 60 * 60),
+            Enum::Minute => intval($interval->format('%i')) + (intval($interval->format('%h')) * 60) + (intval($interval->format('%a')) * 24 * 60),
+            Enum::Second => intval($interval->format('%s')) + (intval($interval->format('%i')) * 60) + (intval($interval->format('%h')) * 3600) + (intval($interval->format('%a')) * 86400),
             default => null,
         };
 
@@ -155,7 +155,7 @@ class DistanceDate
             $value = $numberToWords->make($value);
         }
 
-        $result = $separator.$value.$separator.$label;
+        $result = $value.$separator.$label;
 
         return Str::of($result)->trim();
     }
