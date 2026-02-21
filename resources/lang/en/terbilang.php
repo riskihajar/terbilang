@@ -38,7 +38,7 @@ return [
         19 => 'nineteen',
         20 => 'twenty',
         30 => 'thirty',
-        40 => 'fourty',
+        40 => 'forty',
         50 => 'fifty',
         60 => 'sixty',
         70 => 'seventy',
