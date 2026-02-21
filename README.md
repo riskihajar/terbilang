@@ -25,29 +25,33 @@ Number to words conversion support multi language.
 
 ## Version Compatibility
 
- Laravel  | Terbilang
-:-----------|:----------
- 4.x        | 1.0.4       
- 5.x - 7.x  | 1.2.x   
- 8.x - 12.x | 2.x  
+ Laravel     | Terbilang | PHP
+:------------|:----------|:----------
+ 4.x         | 1.0.4     | 
+ 5.x - 7.x  | 1.2.x     | 
+ 8.x - 9.x  | 2.0.x     | ^7.4 \| ^8.0
+ 10.x - 13.x | 2.1.x    | ^8.1
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require riskihajar/terbilang:^2.0
+composer require riskihajar/terbilang:^2.1
 ```
 
 ## Usage
 
-#### Add Providers & Aliases
-In the `$providers` array add the service providers for this package.
+#### Service Provider & Facade
+
+This package supports **Laravel auto-discovery**, so the service provider and facade are registered automatically. No manual setup needed.
+
+If you prefer to register manually (e.g. in `config/app.php`):
 ```php
+// In the $providers array
 Riskihajar\Terbilang\TerbilangServiceProvider::class,
-```
-Add the facade of this package to the `$aliases` array.
-```php
+
+// In the $aliases array
 'Terbilang' => Riskihajar\Terbilang\Facades\Terbilang::class,
 ```
 
