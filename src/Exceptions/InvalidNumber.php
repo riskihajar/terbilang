@@ -15,4 +15,9 @@ final class InvalidNumber extends Exception
     {
         return new self('Number paramaters is not numeric');
     }
+
+    public static function invalidRomanRange(): self
+    {
+        return new self('Roman numerals only support numbers between 1 and 3999');
+    }
 }
