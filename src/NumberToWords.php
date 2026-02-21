@@ -45,18 +45,18 @@ class NumberToWords
         // parse quoted value and make sure its number
         $number = floatval($number);
 
+        // Check overflow before any int cast (PHP 8.5+ throws on float-to-int overflow)
+        if (
+            $number >= 10_000_000_000_000_000
+            || $number < -PHP_INT_MAX
+        ) {
+            throw Exceptions\InvalidNumber::isExceed();
+        }
+
         $isScientific = preg_match('/^[+-]?[0-9]+(\.[0-9]+)?[eE][+-]?[0-9]+$/', $number);
 
         if ($isScientific) { // handle scientific value like 1.0E+15 after parse quoted
             $number = sprintf('%0d', $number);
-        }
-
-        if (
-            ($number >= 0 && intval($number) < 0)
-            || (intval($number) < 0 - PHP_INT_MAX)
-            || $number >= 10_000_000_000_000_000
-        ) {
-            throw Exceptions\InvalidNumber::isExceed();
         }
 
         return $number;
