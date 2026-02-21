@@ -2,29 +2,39 @@
 
 namespace Riskihajar\Terbilang;
 
+use Illuminate\Support\ServiceProvider;
 use Riskihajar\Terbilang\Commands\TerbilangLargeNumberCommand;
 use Riskihajar\Terbilang\Commands\TerbilangNumberToWordsCommand;
 use Riskihajar\Terbilang\Commands\TerbilangRomanCommand;
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class TerbilangServiceProvider extends PackageServiceProvider
+class TerbilangServiceProvider extends ServiceProvider
 {
-    public function configurePackage(Package $package): void
+    public function register(): void
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
-        $package
-            ->name('terbilang')
-            ->hasConfigFile()
-            ->hasTranslations()
-            ->hasCommands(
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/terbilang.php',
+            'terbilang'
+        );
+    }
+
+    public function boot(): void
+    {
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'terbilang');
+
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../config/terbilang.php' => config_path('terbilang.php'),
+            ], 'terbilang-config');
+
+            $this->publishes([
+                __DIR__.'/../resources/lang' => $this->app->langPath('vendor/terbilang'),
+            ], 'terbilang-translations');
+
+            $this->commands([
                 TerbilangNumberToWordsCommand::class,
                 TerbilangRomanCommand::class,
                 TerbilangLargeNumberCommand::class,
-            );
+            ]);
+        }
     }
 }
