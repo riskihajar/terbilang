@@ -25,7 +25,7 @@ it('can convert date to word', function () {
 it('can convert time to word', function () {
     config()->set('terbilang.use_intl', false);
     $time = \DateTime::createFromFormat('H:i:s', '09:30:45');
-    $this->assertEquals('nine past thirty minutes fourty-five seconds', (new DateTime)->time($time));
+    $this->assertEquals('nine past thirty minutes forty-five seconds', (new DateTime)->time($time));
 });
 
 it('can convert datetime to word', function () {
