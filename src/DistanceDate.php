@@ -69,36 +69,38 @@ class DistanceDate
 
         $locale = config('terbilang.locale') ?: config('app.locale');
 
+        $show = $this->config['show'] ?? [];
+
         $listFormat = [
             '{YEAR}' => [
                 'value' => $year,
                 'label' => Lang::get('terbilang::date.dictionary.year', [], $locale),
-                'show' => config('terbilang.period.show.year'),
+                'show' => $show['year'] ?? true,
             ],
             '{MONTH}' => [
                 'value' => $month,
                 'label' => Lang::get('terbilang::date.dictionary.month', [], $locale),
-                'show' => config('terbilang.period.show.month'),
+                'show' => $show['month'] ?? true,
             ],
             '{DAY}' => [
                 'value' => $day,
                 'label' => Lang::get('terbilang::date.dictionary.day', [], $locale),
-                'show' => config('terbilang.period.show.day'),
+                'show' => $show['day'] ?? true,
             ],
             '{HOUR}' => [
                 'value' => $hour,
                 'label' => Lang::get('terbilang::date.dictionary.hour', [], $locale),
-                'show' => config('terbilang.period.show.hour'),
+                'show' => $show['hour'] ?? true,
             ],
             '{MINUTE}' => [
                 'value' => $minute,
                 'label' => Lang::get('terbilang::date.dictionary.minute', [], $locale),
-                'show' => config('terbilang.period.show.minute'),
+                'show' => $show['minute'] ?? true,
             ],
             '{SECOND}' => [
                 'value' => $second,
                 'label' => Lang::get('terbilang::date.dictionary.second', [], $locale),
-                'show' => config('terbilang.period.show.second'),
+                'show' => $show['second'] ?? true,
             ],
         ];
 
@@ -136,10 +138,6 @@ class DistanceDate
         $terbilang = $this->config['terbilang'];
         $separator = $this->config['separator'];
         $numberToWords = new NumberToWords;
-
-        if ($type === Enum::Year) {
-            $value = $interval->format('%y');
-        }
 
         $value = match ($type) {
             Enum::Year => $interval->format('%y'),
