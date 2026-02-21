@@ -16,56 +16,41 @@ jobs:
       fail-fast: true
       matrix:
         os: [ubuntu-latest, windows-latest]
-        php: [7.4, 8.0, 8.1, 8.2, '8.3', '8.4', '8.5']
-        laravel: ['8.*', '9.*', '10.*', '11.*', '13.*']
+        php: ['8.1', '8.2', '8.3', '8.4', '8.5']
+        laravel: ['10.*', '11.*', '12.*', '13.*']
         stability: [prefer-lowest, prefer-stable]
         include:
+          - laravel: 13.*
+            testbench: 11.*
+            carbon: 3.*
+          - laravel: 12.*
+            testbench: 10.*
+            carbon: 3.*
           - laravel: 11.*
-            testbench: 9.*
+            testbench: ^9.5
             carbon: 2.*
-            script: true
           - laravel: 10.*
-            testbench: 8.*
+            testbench: ^8.28
             carbon: 2.*
-            script: false
-          - laravel: 9.*
-            testbench: 7.*
-            carbon: 2.*
-            script: true
-          - laravel: 9.*
-            testbench: 7.*
-            carbon: 2.*
-            php: 8.0
-            script: false
-          - laravel: 8.*
-            testbench: 6.*
-            carbon: 2.*
-            script: false
         exclude:
-          - laravel: 8.*
-            php: 8.1
-          - laravel: 8.*
-            php: 8.2
-          - laravel: 9.*
-            php: 7.4
+          # Laravel 10: PHP ^8.1 — test 8.1, 8.2, 8.3, 8.4
           - laravel: 10.*
-            php: 7.4
-          - laravel: 10.*
-            php: 8.0
+            php: '8.5'
+          # Laravel 11: PHP ^8.2 — test 8.2, 8.3, 8.4
           - laravel: 11.*
-            php: 7.4
+            php: '8.1'
           - laravel: 11.*
-            php: 8.0
-          - laravel: 11.*
-            php: 8.1
+            php: '8.5'
+          # Laravel 12: PHP ^8.2 — test 8.2, 8.3, 8.4
+          - laravel: 12.*
+            php: '8.1'
+          - laravel: 12.*
+            php: '8.5'
+          # Laravel 13: PHP ^8.3 — test 8.3, 8.4, 8.5
           - laravel: 13.*
-            php: 7.4
+            php: '8.1'
           - laravel: 13.*
-            php: 8.0
-          - laravel: 13.*
-            php: 8.1
-          - laravel: 13.*
-            php: 8.2
+            php: '8.2'
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
@@ -85,10 +70,23 @@ jobs:
           echo "::add-matcher::${{ runner.tool_cache }}/php.json"
           echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
-      - name: Remove Laravel Pint
-        if: 'matrix.php < 8'
+      - name: Downgrade test tooling for PHP 8.1
+        if: matrix.php == '8.1'
+        shell: bash
         run: |
-          composer remove "laravel/pint" --dev --no-interaction --no-update
+          composer remove pestphp/pest pestphp/pest-plugin-laravel nunomaduro/collision phpunit/phpunit --dev --no-interaction --no-update
+          composer require "pestphp/pest:^1.23" "pestphp/pest-plugin-laravel:^1.4" "nunomaduro/collision:^6.4" "phpunit/phpunit:^9.6" --dev --no-interaction --no-update
+          php -r "file_put_contents('phpunit.xml.dist', str_replace(['<source>', '</source>'], ['<coverage>', '</coverage>'], file_get_contents('phpunit.xml.dist')));"
+
+      - name: Remove packages incompatible with Laravel 12+
+        if: matrix.laravel == '12.*' || matrix.laravel == '13.*'
+        run: |
+          composer remove "larastan/larastan" "phpstan/extension-installer" "phpstan/phpstan-deprecation-rules" "phpstan/phpstan-phpunit" --dev --no-interaction --no-update
+
+      - name: Remove packages incompatible with Laravel 13
+        if: matrix.laravel == '13.*'
+        run: |
+          composer remove "pestphp/pest-plugin-laravel" --dev --no-interaction --no-update
 
       - name: Setup dependencies
         run: |
@@ -96,11 +94,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer update --${{ matrix.stability }} --prefer-dist --no-interaction ${{ matrix.script && ' ' || '--no-scripts' }}
+          composer update --${{ matrix.stability }} --prefer-dist --no-interaction --no-scripts
 
       - name: List Installed Dependencies
         run: composer show -D
 
       - name: Execute tests
-        if: 'matrix.laravel >= 8'
         run: vendor/bin/pest
