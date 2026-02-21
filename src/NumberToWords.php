@@ -85,7 +85,7 @@ class NumberToWords
         }
 
         if ($number < 0) {
-            return $this->make(number: abs($number))->prepend($this->negative, ' ');
+            return $this->make(number: abs($number))->prepend($this->negative);
         }
 
         $string = $fraction = null;
